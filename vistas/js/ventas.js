@@ -7,6 +7,8 @@ CARGAR LA TABLA DINÁMICA DE VENTAS
 		console.log("respuesta", respuesta);
  	}
  });// 
+
+
 // Obtener el Id del usuario desde el input oculto
 var idUsuario = $("#idUsuario").val();
 // var idUsuario = 73;

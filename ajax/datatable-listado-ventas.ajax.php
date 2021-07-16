@@ -28,9 +28,9 @@ class TablaListadoVentas
   public function mostrarTablaListadoVentas()
   {
     // Definir que item se quiere consultar en la base de datos
-    $item = "id_vendedor";
+    $item = null;
     // Definir el valor que se va a comparar en la consulta en la base de datos PARA COMPRAS ES ID VENDEDOR
-    $valor = $_GET["idUsuario"];
+    $valor = null;
     // Se pide la respuesta para todas las ventas filtradas por id_vendedor
     $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor);
 
@@ -109,12 +109,16 @@ class TablaListadoVentas
       BOTONES DE ACCIÓN
       ==================================*/
 
-      /*$botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button>
-      <button class='btn btn-danger btnEliminarVenta' idVenta='" . $value["id"] . "'><i class='fa fa-times'></i></button>";
-*/
-      /*$botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";
-*/
+     /* $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button>
+      <button class='btn btn-danger btnEliminarVenta' idVenta='" . $value["id"] . "'><i class='fa fa-times'></i></button></div>";
+      */
+      if (isset($_GET["perfilOculto"]) && $_GET["perfilOculto"] == "Vendedor") {
+        $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";
+    } else {
+      
       $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarVenta' idVenta='".$value["id"]."' data-toggle='modal' data-target='#modalEditarVenta'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";
+    };
+      /*$botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarVenta' idVenta='".$value["id"]."' data-toggle='modal' data-target='#modalEditarVenta'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";*/
       /*===================================
       DEVOLVER LOS DATOS
       ===================================*/
@@ -136,7 +140,8 @@ class TablaListadoVentas
     // Remover la última coma
     $datosJson = substr($datosJson, 0, -1);
     // Cerrar etiquetas para los datos JSON
-    $datosJson .= '] }';
+    $datosJson .=   ']
+     }';
     // Devolver los datos
     echo $datosJson;
   }

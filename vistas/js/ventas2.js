@@ -1,6 +1,18 @@
+
+
+
+ $.ajax({
+  url: "ajax/datatable-listado-ventas.ajax.php",
+  success:function(respuesta){
+   console.log("respuesta", respuesta);
+  }
+});// 
+
+
+var perfilOculto = $("#perfilOculto").val();
 var idUsuario = $("#idUsuario").val();
 $('.tablaListadoVentas').dataTable({
-  "ajax": "ajax/datatable-listado-ventas.ajax.php?idUsuario=" + idUsuario,
+  "ajax": "ajax/datatable-listado-ventas.ajax.php?perfilOculto=" +perfilOculto,
   "deferRender": true,
   "retrieve": true,
   "processing": true,

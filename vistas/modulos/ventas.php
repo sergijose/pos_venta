@@ -22,12 +22,10 @@
         <thead>
           <tr>
             <th style="width:10px">#</th>
-            <!--   <th>Codigo</th> -->
             <th>Cliente</th>
             <th>Vendedor</th>
             <th>Cantidad</th>
             <th>Producto</th>
-            <!-- <th>Precio_Unidad</th> -->
             <th>TotalXProducto</th>
             <th>Forma_Pago</th>
             <th>Comprobante</th>
@@ -38,84 +36,8 @@
 
           </tr>
         </thead>
-
-        <tbody>
-          <?php
-
-          // $item = null;
-          // $valor = null;
-          // $idUsuario = null;
-          // $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor, $idUsuario);
-
-          // foreach ($respuesta as $key => $value) {
-          //   echo '<tr>
-
-          //         <td>' . ($key + 1) . '</td>';
-
-          //   $itemCliente = "id";
-          //   $valorCliente = $value["id_cliente"];
-          //   $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
-          //   echo '<td>' . $respuestaCliente["nombre"] . '</td>';
-
-          //   $itemUsuario = "id";
-          //   $valorUsuario = $value["id_vendedor"];
-          //   $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
-          //   echo '<td>' . $respuestaUsuario["nombre"] . '</td><td>';
-
-
-          //   $productos =  json_decode($value["productos"], true);
-          //   foreach ($productos as $key => $valueProductos) {
-          //     echo ($valueProductos["cantidad"] . '<br>');
-          //   }
-
-          //   echo '</td><td>';
-          //   $productos = json_decode($value["productos"], true);
-          //   foreach ($productos as $key2 => $value2) {
-          //     echo $value2["descripcion"] . '<br>';
-          //   }
-          //   echo '</td>';
-
-          //   echo '</td><td>';
-          //   $productos = json_decode($value["productos"], true);
-          //   foreach ($productos as $key2 => $value2) {
-          //     echo "S/ " . number_format($value2["precio"], 2) . "<br>";
-          //   }
-          //   echo '</td>';
-
-          //   echo '</td><td>';
-          //   $productos = json_decode($value["productos"], true);
-          //   foreach ($productos as $key2 => $value2) {
-          //     echo "S/ " . number_format($value2["total"], 2) . "<br>";
-          //   }
-          //   echo '</td>';
-
-          //   echo '</td><td>' . $value["metodo_pago"] . '</td></td>';
-
-          //   echo '</td><td>S/ ' . number_format($value["neto"], 2) . '</td>
-          //         <td>S/ ' . number_format($value["total"], 2) . '</td>
-          //         <td>' . $value["fecha"] . '</td>
-          //         <td>
-
-          //            <div class="btn-group">
-          //                 <button class="btn btn-success btnImprimirFactura" codigoVenta="' . $value["codigo"] . '">
-          //                   <i class="fa fa-print"></i>
-
-          //                 </button>';
-          //   if ($_SESSION["perfil"] == "Administrador") {
-
-          //     echo '<button class="btn btn-warning btnEditarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>';
-          //   }
-          //   echo '</div>  
-          //             </td>
-          //           </tr>';
-          // }
-          ?>
-
-        </tbody>
-
-        <input type="hidden" value="<?php echo $_SESSION['id']; ?>" id="idUsuario">
       </table>
-
+      <input type="hidden" value="<?php echo $_SESSION['id']; ?>" id="idUsuario">
     </div>
 </div>
 </section>

@@ -120,6 +120,7 @@ class ControladorVentas
 
         echo '<script>
         localStorage.removeItem("rango");
+       
         swal({
             type: "success",
             title: "La venta ha sido guardada correctamente",
@@ -128,6 +129,8 @@ class ControladorVentas
             }).then(function(result){
                 if (result.value) {
                  window.open("extensiones/tcpdf/pdf/ticket.php?codigo='.$idultimo.'");
+                
+                 setInterval(function(){ window.location.href ="ventas";; }, 2000);
                 }
               })
         </script>';

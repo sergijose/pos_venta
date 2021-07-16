@@ -120,7 +120,7 @@ MODAL CLIENTES DNI
               <label>Informacion de Cliente:</label>
                <div class="input-group">
                <span class="input-group-addon"><i class="fa fa-building"></i></span> 
-                <input type="text" class="form-control" id="nombres" name="nombres" required readonly>
+                <input type="text" class="form-control" id="nombres" name="nombres" required >
               </div>
             </div>
         </div>    

@@ -70,7 +70,7 @@
                     $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 
                     if(!$ventas){
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="001" readonly>';                 
+                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="0001" readonly>';                 
                     }else{
 
                       foreach ($ventas as $key => $value) {                     

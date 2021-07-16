@@ -23,6 +23,7 @@
 
 				if($_SESSION["perfil"] == "Administrador"){
 					echo '
+					<!--
 					<li>
 						<a href="categorias">
 							<i class="fa fa-th"></i>
@@ -34,7 +35,7 @@
 							<i class="fa fa-th"></i>
 							<span>Proveedores</span>
 						</a>
-					</li>';
+					</li>-->';
 				}
 
               if($_SESSION["perfil"] == "Administrador"){

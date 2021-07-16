@@ -2,7 +2,7 @@
 SideBar Menu
 =============================================*/
 
-$('.sidebar-menu').tree()
+$('.sidebar-menu').tree();
 /*============================================
 Data Table
 =============================================*/
@@ -58,3 +58,12 @@ CORRECCIÓN BOTONERAS OCULTAS BACKEND
 // }else{
 // 	$("body").addClass('sidebar-collapse');
 // }
+
+if(window.matchMedia("(max-width:767px)").matches){
+	
+	$("body").removeClass('sidebar-collapse');
+
+}else{
+
+	$("body").addClass('sidebar-collapse');
+}

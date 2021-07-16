@@ -34,7 +34,6 @@ if($_SESSION["perfil"] != "Administrador"){
               <th style="width:10px">#</th>
               
               <th>Código</th>
-              <th>Código_Interno</th>
               <th>Nombre</th>
               <th>Categoria</th>
               <th>Sucursal</th>
@@ -122,31 +121,12 @@ if($_SESSION["perfil"] != "Administrador"){
                 <span class="input-group-addon"><i class="fa fa-barcode"></i></span> 
                 <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Codigo del Producto" required>
                 <span class="input-group-btn">
-                   <button type="button" class="btn btn-primary btn-xs form-control input-lg" onClick="getCodigoProducto()"><i class="glyphicon glyphicon-repeat"></i> Generar</button>  
+                 <!--   <button type="button" class="btn btn-primary btn-xs form-control input-lg" onClick="getCodigoProducto()"><i class="glyphicon glyphicon-repeat"></i> Generar</button>  -->
                  </span>
               </div>
             </div>
     <!-- ENTRADA PARA EL CÓDIGO INTERNO -->
-              <div class="form-group">
-<!--                     <label>Codigo Interno:</label> -->
-                    <div class="input-group">
-                      <!-- <span class="input-group-addon"><i class="fa fa-key"></i></span> -->
-                      <?php
-                      $item = null;
-                      $valor = null;
-
-                      $productos = ControladorProductos::ctrMostrarProductos2($item, $valor);
-                      if (!$productos) {
-                        echo '<input type="hidden" class="form-control input-lg" id="nuevoCodigo2" name="nuevoCodigo2" value="1" readonly>';
-                      } else {
-                        foreach ($productos as $key => $value) {
-                        }
-                        $codigo2 = $value["codigo2"] + 1;
-                        echo '<input type="hidden" class="form-control input-lg" id="nuevoCodigo2" name="nuevoCodigo2" value="' . $codigo2 . '" readonly>';
-                      }
-                      ?>
-                    </div>
-              </div>
+            
     <!-- ENTRADA PARA NOMBRE -->
           <div class="form-group">           
               <div class="input-group">          
@@ -249,15 +229,17 @@ if($_SESSION["perfil"] != "Administrador"){
               <div class="input-group">          
                 <span class="input-group-addon"><i class="fa fa-barcode"></i></span> 
                 <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly required>
+                <input type="hidden" class="form-control input-lg" id="id" name="id" readonly required>
               </div>
             </div> 
-            <!-- ENTRADA PARA EL CÓDIGO INTERNO -->  
+            <!-- ENTRADA PARA EL CÓDIGO INTERNO  
           <div class="form-group">
               <div class="input-group">          
                 <span class="input-group-addon"><i class="fa fa-barcode"></i></span> 
                 <input type="text" class="form-control input-lg" id="editarCodigo2" name="editarCodigo2" readonly required>
               </div>
           </div>    
+          --> 
             <!-- ENTRADA PARA LA NOMBRE-->
             <div class="form-group">             
               <div class="input-group">

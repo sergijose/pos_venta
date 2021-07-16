@@ -63,7 +63,6 @@ class TablaProductos
 						"' . ($i + 1) . '",
 				
 						"' . $productos[$i]["codigo"] . '",
-            "' . $productos[$i]["codigo2"] . '",
 						"' . $productos[$i]["nombre"] . '",
 						"' . $categorias["categoria"] . '",
 						"' . $sucursal["sede"] . '",

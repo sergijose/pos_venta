@@ -71,38 +71,86 @@ $bloque1 = <<<EOF
 
 
 <table style="font-size:6px; text-align:left">
-<br>
+
+	<tr>
+		<td style="background-color:white; width:auto">
+				
+			<div style="font-size:8.5px; text-align:center;">
+				<b>SECURITY AND HADWARE PERU</b>
+				<img style="width:60px; height:60px;"src="images/logo-empresa.jpg">
+
+			</div>
+
+		</td>
+	</tr>
 	<br>
-	
+
 	<tr>
-	<td style="width:40px;">Nº:</td>
-	<td style="width:100px;">$valorVenta</td>
+	<td style="width:40px;"><b>Ruc:</b></td>
+	<td style="width:100px;">20603001401</td>
 	</tr>
 	
 	<tr>
-	<td style="width:40px;">Fecha:</td>
-	<td style="width:100px;">$fecha</td>
+	<td style="width:40px;"><b>Telefono:</b></td>
+	<td style="width:100px;">938133130</td>
 	</tr>
-	
+
+
 	<tr>
-	<td style="width:40px;">Cliente:</td>
+	<td style="width:40px;"><b>Direccion:</b></td>
+	<td style="width:100px;">Jr Bolognesi 1031</td>
+	</tr>
+
+
+	<tr>
+	<td style="width:40px;"><b>Ticket:</b></td>
+	<td style="width:50px;">$valorVenta</td>
+	<td style="width:40px;"><b>Fecha:</b></td>
+	<td style="width:50px;">$fecha</td>
+	</tr>
+	<br>
+
+	<tr>
+	<div style="font-size:7.5px; text-align:left;">
+	<b>Datos del Cliente</b>
+	</div>
+	</tr>
+
+	<br>
+
+	<tr>
+	<td style="width:40px;"><b>Nombre:</b></td>
 	<td style="width:100px;">$respuestaCliente[razon_social]</td>
-	</tr>
-	
-	<tr>
-	<td style="width:40px;">Dirección:</td>
-	<td style="width:100px;">$respuestaCliente[direccion]</td>
 	</tr>
 
 	<tr>
-	<td style="width:40px;">DNI:</td>
+	<td style="width:40px;"><b>DNI:</b></td>
 	<td style="width:100px;">$respuestaCliente[ruc]</td>
 	</tr>
+
+	<tr>
+	<td style="width:40px;"><b>Telefono:</b></td>
+	<td style="width:100px;">$respuestaCliente[telefono]</td>
+	</tr>
+	
+	<tr>
+	<td style="width:40px;"><b>Dirección:</b></td>
+	<td style="width:100px;">$respuestaCliente[direccion]</td>
+	</tr>
+
+	
 
 </table>
 
 <div  style="text-align:center;font-size:7px;">*******************************************************</div>
 
+<tr>
+<div style="font-size:7.5px; text-align:left;">
+<b>Detalles del producto</b>
+</div>
+</tr>
+
+<br>
 
 <table style="font-size:6px; text-align:left">
 	<tr style="text-align:left; font-weight: bold">
@@ -139,12 +187,25 @@ $bloque3 = <<<EOF
 <br>
 <br>
 <br>
-	
+<tr>
+<td style="width:30px;"></td>
+<td style="width:10px;"></td>
+<td style="width:90px;">Sub Total:</td>
+<td style="text-align: right;">$neto</td>
+<td style="width:30px;"></td>
+</tr>
+<tr>
+<td style="width:30px;"></td>
+<td style="width:10px;"></td>
+<td style="width:90px;">IGV:</td>
+<td style="text-align: right;">$impuesto</td>
+<td style="width:30px;"></td>
+</tr>
 
 	<tr>
 		<td style="width:30px;"></td>
 		<td style="width:10px;"></td>
-		<td style="width:90px;">Total:</td>
+		<td style="width:90px;"><b>Total:</b></td>
 		<td style="text-align: right;">$total</td>
 		<td style="width:30px;"></td>
 	</tr>
@@ -176,14 +237,11 @@ $bloque3 = <<<EOF
 	</tr>
 
 	<tr   style="font-weight: bold">
-			<td >Muchas gracias por su compra</td>
+			<td >Gracias por su preferencia</td>
 	</tr>
 	
-<div  style="text-align:center;font-size:7px;">*******************************************************</div>
-	<tr   style="font-weight: bold">
-			<div style="text-align:center; font-size:7px;">Software Desarrollado por:<br>
-			PIURASOFT SOLUTIONS- SOLUCIONES TECNOLOGICAS Y SERVICIOS GENERALES E.I.R.L.<br> PIURA - PERU<br>www.sistemaspiura.com<br>Celular:(+51) 968 119 674</div>
-	</tr>
+	
+
 
 </table>
 

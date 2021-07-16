@@ -29,12 +29,14 @@
 							<span>Categorías</span>
 						</a>
 					</li>
+					<!--
                     <li>
+						
 						<a href="proveedores">
 							<i class="fa fa-th"></i>
 							<span>Proveedores</span>
 						</a>
-					</li>';
+					</li>-->';
 				}
 
               if($_SESSION["perfil"] == "Administrador"){

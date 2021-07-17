@@ -97,9 +97,12 @@
                          echo '<option value="'.$value["id"].'">'.$value["razon_social"].'</option>';
                        }
                     ?>
-                    </select>                  
-                    <span class="input-group-addon"><button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
-                  </div>             
+                    </select>        
+                     <!--          
+                    <span class="input-group-addon">
+                     <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
+                      -->
+                    </div>             
                 </div>
             </div>    
                 <!--=====================================

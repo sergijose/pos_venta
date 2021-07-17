@@ -23,6 +23,7 @@
 
 				if($_SESSION["perfil"] == "Administrador"){
 					echo '
+					<!--
 					<li>
 						<a href="categorias">
 							<i class="fa fa-th"></i>

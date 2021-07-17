@@ -4,13 +4,14 @@ CARGAR LA TABLA DINÁMICA DE VENTAS
  $.ajax({
  	url: "ajax/datatable-ventas.ajax.php",
  	success:function(respuesta){
-		console.log("respuesta", respuesta);
+	//	console.log("respuesta", respuesta);
  	}
  });// 
 
 
 // Obtener el Id del usuario desde el input oculto
 var idUsuario = $("#idUsuario").val();
+
 // var idUsuario = 73;
 $('.tablaVentas').DataTable({
   "ajax": "ajax/datatable-ventas.ajax.php?idUsuario=" + idUsuario,
@@ -519,9 +520,10 @@ BORRAR VENTA
 $(".tablas").on("click", ".btnEliminarVenta", function () {
 
   var idVenta = $(this).attr("idVenta");
+  //console.log(idVenta);
 
   swal({
-    title: '¿Está seguro de borrar la venta?',
+    title: '¿Está seguro de borrar la venta man?',
     text: "¡Si no lo está puede cancelar la accíón!",
     type: 'warning',
     showCancelButton: true,

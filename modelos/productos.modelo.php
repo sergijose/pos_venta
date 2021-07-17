@@ -78,12 +78,11 @@ class ModeloProductos
   static public function mdlIngresarProducto($tabla, $datos)
   {
 
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, idSucursal, codigo, codigo2, nombre, imagen, stock, precio_compra, precio_venta, descripcion) VALUES (:id_categoria, :idSucursal, :codigo, :codigo2, :nombre, :imagen, :stock, :precio_compra, :precio_venta, :descripcion)");
+    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, idSucursal, codigo, nombre, imagen, stock, precio_compra, precio_venta, descripcion) VALUES (:id_categoria, :idSucursal, :codigo,  :nombre, :imagen, :stock, :precio_compra, :precio_venta, :descripcion)");
 
     $stmt->bindParam(":id_categoria",  $datos["id_categoria"],  PDO::PARAM_INT);
     $stmt->bindParam(":idSucursal",    $datos["idSucursal"],    PDO::PARAM_INT);
     $stmt->bindParam(":codigo",        $datos["codigo"],        PDO::PARAM_STR);
-    $stmt->bindParam(":codigo2",       $datos["codigo2"],       PDO::PARAM_INT);
     $stmt->bindParam(":nombre",        $datos["nombre"],        PDO::PARAM_STR);
     $stmt->bindParam(":imagen",        $datos["imagen"],        PDO::PARAM_STR);
     $stmt->bindParam(":stock",         $datos["stock"],         PDO::PARAM_STR);
@@ -106,12 +105,12 @@ class ModeloProductos
   static public function mdlEditarProducto($tabla, $datos)
   {
 
-    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria=:id_categoria,idSucursal=:idSucursal ,codigo=:codigo, nombre=:nombre, imagen=:imagen, stock=:stock, precio_compra=:precio_compra, precio_venta=:precio_venta, descripcion= :descripcion where codigo2=:codigo2");
+    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria=:id_categoria,idSucursal=:idSucursal ,codigo=:codigo, nombre=:nombre, imagen=:imagen, stock=:stock, precio_compra=:precio_compra, precio_venta=:precio_venta, descripcion= :descripcion where id=:id");
 
     $stmt->bindParam(":id_categoria",  $datos["id_categoria"],  PDO::PARAM_INT);
     $stmt->bindParam(":idSucursal",    $datos["idSucursal"],    PDO::PARAM_INT);
     $stmt->bindParam(":codigo",        $datos["codigo"],        PDO::PARAM_STR);
-    $stmt->bindParam(":codigo2",       $datos["codigo2"],      PDO::PARAM_INT);
+    $stmt->bindParam(":id",             $datos["id"],      PDO::PARAM_INT);
     $stmt->bindParam(":nombre",        $datos["nombre"],        PDO::PARAM_STR);
     $stmt->bindParam(":imagen",        $datos["imagen"],        PDO::PARAM_STR);
     $stmt->bindParam(":stock",         $datos["stock"],         PDO::PARAM_STR);

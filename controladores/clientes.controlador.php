@@ -40,7 +40,45 @@ class ControladorClientes{
       }
   }
 /*=============================================
-  REGISTRAR CLIENTES 2
+
+  REGISTRAR CLIENTES EN CREAR VENTA
+  =============================================*/
+  static public function ctrCrearClienteDNIVENTA(){ // Inicia llave ctrCrearCliete
+    if(isset($_POST["nuevoTipo"])){ // Inicia llave isset
+
+      
+          $tabla = "clientes";
+          $datos = array(
+                       "documento"=>$_POST["nuevoTipo"],
+                       "ruc"=>$_POST["dni"],
+                       "razon_social"=>$_POST["nombres"],
+                       "direccion"=>$_POST["direccion_cliente"],
+                       "ruc2"=>$_POST["ruc_cliente"],
+                       "telefono"=>$_POST["telefono"],
+                       "correo"=>$_POST["correo"]);
+
+          $respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
+               /* var_dump($respuesta);
+                return;*/
+
+          if($respuesta == "ok"){
+
+          echo'<script>
+          swal({
+              type: "success",
+              title: "El Cliente ha sido guardado correctamente",
+              showConfirmButton: true,
+              confirmButtonText: "Cerrar"
+              }).then(function(result){
+                  if (result.value) {
+                  window.location = "crear-venta";
+                  }
+                })
+          </script>';
+        }
+      }
+  }
+  /*REGISTRAR CLIENTES 2
 =============================================*/
 
   static public function ctrCrearClienteRUC(){ // Inicia llave ctrCrearCliete

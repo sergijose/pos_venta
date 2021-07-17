@@ -104,7 +104,7 @@
                         }
                         ?>
                       </select>
-                      <span class="input-group-addon"><button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
+                      <span class="input-group-addon"><button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modalDNI" data-dismiss="modal">Agregar cliente</button></span>
                     </div>
                   </div>
 <!--======================================= 
@@ -231,7 +231,7 @@
 <!--=====================================
 MODAL CLIENTES DNI
 ======================================-->
- <div id="modalAgregarCliente" class="modal fade" role="dialog">
+<div id="modalDNI" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg" id="mdialTamanio">
     <div class="modal-content">
       <form role="form" method="post">  
@@ -276,20 +276,51 @@ MODAL CLIENTES DNI
               <label>Informacion de Cliente:</label>
                <div class="input-group">
                <span class="input-group-addon"><i class="fa fa-building"></i></span> 
-                <input type="text" class="form-control" id="nombres" name="nombres" required readonly>
+                <input type="text" class="form-control" id="nombres" name="nombres" required >
               </div>
             </div>
         </div>    
           
-        <div class="col-xs-12">     
+        <div class="col-xs-6">     
             <div class="form-group">
               <label>Direccion del Cliente:</label>
                <div class="input-group">
                <span class="input-group-addon"><i class="fa fa-building"></i></span> 
-                <input type="text" class="form-control input-lg" id="direccion_cliente" name="direccion_cliente"  autocomplete="off" required>
+                <input type="text" class="form-control" id="direccion_cliente" name="direccion_cliente"  autocomplete="off" required>
               </div>
             </div> 
-        </div>    
+        </div> 
+        
+        <div class="col-xs-6">     
+            <div class="form-group">
+              <label>Numero RUC:</label>
+               <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-building"></i></span> 
+                <input type="text" class="form-control" id="ruc_cliente" name="ruc_cliente"  autocomplete="off">
+              </div>
+            </div> 
+        </div> 
+
+        <div class="col-xs-6">     
+            <div class="form-group">
+              <label>Telefono:</label>
+               <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-building"></i></span> 
+                <input type="text" class="form-control" id="telefono" name="telefono"  autocomplete="off">
+              </div>
+            </div> 
+        </div> 
+
+        <div class="col-xs-6">     
+            <div class="form-group">
+              <label>Correo Electronico:</label>
+               <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-building"></i></span> 
+                <input type="email" class="form-control" id="correo" name="correo"  autocomplete="off">
+              </div>
+            </div> 
+        </div> 
+
              
             </div>
         </div>  
@@ -302,9 +333,10 @@ MODAL CLIENTES DNI
         </div> 
        <?php
         $cliente = new ControladorClientes();
-        $cliente -> ctrCrearClienteRUC();
+        $cliente -> ctrCrearClienteDNIVENTA();
        ?>
       </form>
     </div>
   </div>
 </div> 
+ 

@@ -406,14 +406,15 @@ $("#nuevoMetodoPago").change(function () {
     $(this).parent().parent().addClass("col-xs-4");
     $(this).parent().parent().parent().children(".cajasMetodoPago").html(
 
-      '<div class="col-xs-4">' +
-
+      '<div class="col-xs-4" align="center">' +
+      '<label for="nuevoValorEfectivo">Efectivo</label>'+
       '<div class="input-group">' +
       '<span class="input-group-addon"><i>S/</i></span>' +
       '<input type="text" class="form-control" name="nuevoValorEfectivo" id="nuevoValorEfectivo" placeholder="000000" required>' +
       '</div>' +
       '</div>' +
-      '<div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">' +
+      '<div class="col-xs-4" id="capturarCambioEfectivo" align="center">' +
+      '<label for="nuevoCambioEfectivo">Vuelto</label>'+
       '<div class="input-group">' +
       '<span class="input-group-addon"><i>S/</i></span>' +
       '<input type="text" class="form-control" style="height:60px"  name="nuevoCambioEfectivo" id="nuevoCambioEfectivo" placeholder="000000" readonly required>' +
@@ -434,7 +435,7 @@ $("#nuevoMetodoPago").change(function () {
 
       '<div class="col-xs-6" style="padding-left:0px">' +
       '<div class="input-group">' +
-      '<input type="number" min="0" class="form-control" id="nuevoCodigoTransaccion" placeholder="Código transacción"  required>' +
+      '<input type="number" min="0" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" placeholder="Código transacción"  required>' +
       '<span class="input-group-addon"><i class="fa fa-lock"></i></span>' +
       '</div>' +
       '</div>')

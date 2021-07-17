@@ -113,10 +113,10 @@ class TablaListadoVentas
       <button class='btn btn-danger btnEliminarVenta' idVenta='" . $value["id"] . "'><i class='fa fa-times'></i></button></div>";
       */
       if (isset($_GET["perfilOculto"]) && $_GET["perfilOculto"] == "Vendedor") {
-        $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";
+        $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button></div>";
     } else {
       
-      $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarVenta' idVenta='".$value["id"]."' data-toggle='modal' data-target='#modalEditarVenta'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";
+      $botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarVenta' idVenta='".$value["id"]."' data-toggle='modal' data-target='#modalEditarVenta'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button></div>";
     };
       /*$botones = "<div class='btn-group'><button class='btn btn-success btnImprimirFactura' codigoVenta='" . $value["codigo"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarVenta' idVenta='".$value["id"]."' data-toggle='modal' data-target='#modalEditarVenta'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarVenta' idventa='" . $value["id"] . "'><i class='fa fa-times'></i></button>";*/
       /*===================================

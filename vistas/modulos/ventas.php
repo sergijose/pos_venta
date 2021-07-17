@@ -1,10 +1,10 @@
 <div class="content-wrapper">
   <section class="content-header">
-    <h1><strong>Listado de Ventas del Usuario : <?php  echo $_SESSION["nombre"]; ?></strong> </h1> 
+    <h1><strong>Listado de Ventas del Usuario : <?php echo $_SESSION["nombre"]; ?></strong> </h1>
   </section>
 
   <section class="content">
-    
+
     <div class="box-header with-border">
       <a href="crear-venta">
         <button class="btn btn-primary">Agregar venta</button>
@@ -38,14 +38,11 @@
         </thead>
       </table>
       <input type="hidden" value="<?php echo $_SESSION['id']; ?>" id="idUsuario">
+      <input type="hidden" value="<?php echo $_SESSION['perfil']; ?>" id="perfilOculto" class="perfilOculto">
     </div>
+  </section>
 </div>
-</section>
-</div>
-
-<input type="hidden" value="<?php echo $_SESSION['perfil']; ?>" id="perfilOculto" class="perfilOculto">
-
 <?php
-  $eliminarVenta = new ControladorVentas();
-  $eliminarVenta -> ctrEliminarVenta();
+$eliminarVenta = new ControladorVentas();
+$eliminarVenta->ctrEliminarVenta();
 ?>

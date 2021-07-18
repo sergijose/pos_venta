@@ -16,10 +16,11 @@ foreach ($ventas as $key => $valueVentas) {
       if($valueClientes["id"] == $valueVentas["id_cliente"]){
 
         #Capturamos los Clientes en un array
-        array_push($arrayClientes, $valueClientes["nombre"]);
+        array_push($arrayClientes, $valueClientes["razon_social"]);
+       
 
         #Capturamos las nombres y los valores netos en un mismo array
-        $arraylistaClientes = array($valueClientes["nombre"] => $valueVentas["neto"]);
+        $arraylistaClientes = array($valueClientes["razon_social"] => $valueVentas["neto"]);
         #Sumamos los netos de cada cliente
         foreach ($arraylistaClientes as $key => $value) {        
           $sumaTotalClientes[$key] += $value;        
@@ -29,6 +30,7 @@ foreach ($ventas as $key => $valueVentas) {
 }
 #Evitamos repetir nombre
 $noRepetirNombres = array_unique($arrayClientes);
+
 ?>
 <!--=====================================
 VENDEDORES

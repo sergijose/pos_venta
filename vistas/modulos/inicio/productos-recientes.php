@@ -26,14 +26,14 @@ $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 <?php
   for($i = 0; $i < 10; $i++){
       echo '<li class="item">
-        <div class="product-img">
+<!--<div class="product-img">
           <img src="'.$productos[$i]["imagen"].'" alt="Sin imágen">
         </div>
-        <p> &nbsp </p>
+        <p> &nbsp </p>-->
         <div class="product-info">
           <a href="" class="product-title">
             '.$productos[$i]["nombre"].'
-            <span class="label label-warning pull-right">$'.$productos[$i]["precio_venta"].'</span>
+      <span class="label label-warning pull-right">$'.$productos[$i]["precio_venta"].'</span>
           </a>
        </div>
       </li>';

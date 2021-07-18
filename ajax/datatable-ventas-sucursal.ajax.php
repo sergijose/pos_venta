@@ -8,6 +8,9 @@ require_once "../modelos/productos.modelo.php";
 require_once "../controladores/sucursal.controlador.php";
 require_once "../modelos/sucursal.modelo.php";
 
+require_once "../controladores/categorias.controlador.php";
+require_once "../modelos/categorias.modelo.php";
+
 class TablaSucursalVentas
 {
 
@@ -24,7 +27,8 @@ class TablaSucursalVentas
     $orden = "id";
     // Se pide la respuesta para todas las ventas filtradas por idSucursal
     $productos = ControladorProductos::ctrMostrarProductoSucursal($item, $valor, $orden);
-
+    
+   
     //SI LA TABLA ESTA VACIA SE MOSTRARA DE IGUAL FORMA LOS PRODUCTOS CON ESTA CONDICIONAL
     if (count($productos) == 0) {
 
@@ -45,9 +49,14 @@ class TablaSucursalVentas
       $item = "id";
       $valor = $productos[$i]["idSucursal"];
       $sucursal = ControladorSucursal::ctrMostrarSucursal($item, $valor);
-      /*=============================================
-      Stock del producto
-      /*=============================================*/
+
+      //traemos la categoria
+      $item ="id";
+      $valor = $productos[$i]["id_categoria"];
+      $categorias=ControladorCategorias::ctrMostrarCategorias($item,$valor);
+      
+        //TRAEMOS EL STOCK     
+
       if ($productos[$i]["stock"] <= 10) {
         $stock = "<button class='btn btn-danger'>" . $productos[$i]["stock"] . "</button>";
       } else if ($productos[$i]["stock"] > 11 && $productos[$i]["stock"] <= 19) {
@@ -63,7 +72,8 @@ class TablaSucursalVentas
       $datosJson .= '[
 			      "' . ($i + 1) . '",
 			      "' . $productos[$i]["nombre"] . '",
-            "' . $productos[$i]["descripcion"] . '",
+            "' . $categorias["categoria"] . '",
+            "' . $productos[$i]["precio_venta"] . '",
 			      "' . $stock . '",
 			      "' . $botones . '"
 			    ],';

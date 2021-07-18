@@ -208,9 +208,10 @@
                 <tr>
                   <th style="width: 10px">#</th>
                   <th>Producto</th>
-                  <th>Nota/Descripcion</th>
-                  <th>Stock_Actual</th>
-                  <th>Acciones</th>
+                  <th>Categoria</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                 <th>Acciones</th>
                 </tr>
               </thead>
 

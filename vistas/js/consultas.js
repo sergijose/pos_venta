@@ -47,15 +47,20 @@ function consultar(){
             });
     }
 
-//Funcion para Consultar RUC
-function consultaRUC(){
-        var ruc = $("#ruc").val();
+//Funcion para Consultar 
+//cambie nombrre de funcion decia consultarRuc
+function consultar(){
+        var ruc = $("#dni").val();
         $.ajax({
                 type: 'GET',
                 url: 'https://rest.softdatamen.com/v1/0e622529d7b8d35ba8a9885d334bc84b/sunat?ruc='+ruc,
                 success: function(data){
+                    console.log(data);
                     //$("#nombres").val(data.nombres + " " + data.apellidoPaterno + " " + data.apellidoMaterno);
-                    $("#razon_social").val(data.result.razon_social);
+                    $("#nombres").val(data.result.razon_social);
+                    //cambie de nombre de imput para que funcione solo en crear clientes 
+                    //se puede cambiar para que funcione en modulo proveedores
+                   // $("#ruc").val(data.result.razon_social);
                     $("#direccion_empresa").val(data.result.direccion);
                 }
             });

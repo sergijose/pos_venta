@@ -101,6 +101,8 @@ MODAL CLIENTES DNI
                     <select class="form-control" id="nuevoTipo" name="nuevoTipo">
                       <option value="">Selecionar Tipo</option>
                       <option value="DNI">D.N.I.</option>
+                      <option value="RUC">RUC</option>
+
                 </select>
               </div>
             </div> 

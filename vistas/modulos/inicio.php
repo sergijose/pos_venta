@@ -2,7 +2,7 @@
   <!-- SECCION PARA QUE APAREZCAN LAS CAJAS CON DESCRIPCION -->
   <section class="content">
     
-    <!-- Codigo para Descripocion Total del Sistema -->
+    <!-- Codigo para Descripocion Total del Sistema 
     <div class="box">
       <div class="box-header with-border">
         <h1 class="box-title"><strong>Sistema de Ventas y Facturacion</strong> </h1>
@@ -30,6 +30,7 @@
         <strong>Celular - WhatsApp : (+51) 968 119 674 </strong>
       </div>
     </div>
+    -->
  <!-- Final de Codigo : Descripcion Breve del Sistema -->
  <!-- Inicio de Cajas Superiores -->
 <div class="row"> 
@@ -54,12 +55,29 @@
        <!-- Código para Productos Mas Vendidos --> 
 
 
-        <!-- Código para Productos Agregados Recientemente -->
+        <!-- Código para vendedores-->
          <div class="col-lg-6">
           <?php
             include "reportes/vendedores.php";
           ?>
         </div>
+
+      
+          <!-- Código para Productos Agregados Recientemente -->
+          <div class="col-lg-6">
+          <?php
+            include "inicio/productos-recientes.php";
+          ?>
+        </div>
+        
+ <!-- Código para Productos Mas Vendidos -->
+        <div class="col-lg-6">
+          <?php
+            include "reportes/productos-mas-vendidos.php";
+          ?>
+        </div>
+        
+
         <!-- Código para Perfil Diferente al Administrador -->
          <div class="col-lg-12">
           <?php

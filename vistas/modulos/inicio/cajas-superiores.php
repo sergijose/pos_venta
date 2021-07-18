@@ -4,11 +4,12 @@ $item = null;
 $valor = null;
 $orden = "id";
 
-$ventas = ControladorVentas::ctrSumaTotalVentas();
+//$ventas1 = ControladorVentas::ctrSumaTotalVentas();
 $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 $totalVentas = count($ventas);
+//var_dump($totalVentas);
 
-$compras = ControladorCompras::ctrSumaTotalCompras();
+//$compras = ControladorCompras::ctrSumaTotalCompras();
 $compras = ControladorCompras::ctrMostrarCompras($item, $valor);
 $totalCompras = count($compras);
 

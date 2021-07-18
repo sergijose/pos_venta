@@ -17,9 +17,9 @@ PRODUCTOS MÁS VENDIDOS
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="chart-responsive">
-          <canvas id="pieChart" height="300"></canvas>
+          <canvas id="pieChart" height="250"></canvas>
         </div>
       </div>
     <div class="col-md-4">
@@ -28,7 +28,7 @@ PRODUCTOS MÁS VENDIDOS
         <br>
       <?php
         for($i = 0; $i < 10; $i++){
-        echo '<li style="font-size:16px"><i class="fa fa-circle-o" style="color:'.$colores[$i].'; font-size:18px"></i>  '.$productos[$i]["nombre"].'</li>';
+        echo '<li style="font-size:12px"><i class="fa fa-circle-o" style="color:'.$colores[$i].'; font-size:18px"></i>  '.$productos[$i]["nombre"].'</li>';
                                 }
         ?>
         </ul>
@@ -43,7 +43,7 @@ PRODUCTOS MÁS VENDIDOS
     for($i = 0; $i <10; $i++){
         echo '<li>      
         <a>
-        <img src="'.$productos[$i]["imagen"].'" class="img-thumbnail" width="60px" style="margin-right:10px"> 
+       <!-- <img src="'.$productos[$i]["imagen"].'" class="img-thumbnail" width="60px" style="margin-right:10px"> -->
         '.$productos[$i]["nombre"].'
         <span class="pull-right " style="color:'.$colores[$i].'">   
         '.ceil($productos[$i]["ventas"]*100/$totalVentas["total"]).'%

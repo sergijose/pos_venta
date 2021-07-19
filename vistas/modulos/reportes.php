@@ -16,7 +16,79 @@ if ($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor") {
     </ol>
   </section>
   <section class="content">
+
+
     <div class="box">
+
+      <!--primer header-->
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="box-header with-border">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><strong>Lista de ventas por Vendedor</strong></h3>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+
+                      <div class="input-group">
+
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                        <select class="form-control input-md" id="idCliente" name="idCliente" onchange="ShowSelected(this);" required>
+
+                          
+
+                          <?php
+
+                          $item = null;
+                          $valor = null;
+
+                          $vendedor = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+                          foreach ($vendedor as $key => $value) {
+
+                            echo '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
+                          }
+
+                          ?>
+
+                        </select>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 col-xs-12">
+
+
+                    <?php
+
+                    if (isset($_GET["vendedor"])) {
+                      echo '<a href="vistas/modulos/descargar-reporte-vendedor.php?vendedor=' . $_GET["vendedor"] . '">';
+                    } else {
+                      echo '<a href="vistas/modulos/descargar-reporte-vendedor.php?vendedor=vendedor">';
+                    }
+                    ?>
+                    <button class="btn btn-success btnMostrar" id="btnMostrar" >Descargar reporte en Excel</button>
+                    </a>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- final header-->
+
+
       <div class="box-header with-border">
         <div class="input-group">
           <button type="button" class="btn btn-default" id="daterange-btn2">

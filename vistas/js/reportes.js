@@ -89,7 +89,16 @@ $(".daterangepicker.opensright .ranges li").on("click", function(){
 
 	}
 
-})
+});
+
+
+function ShowSelected()
+{
+  var idCliente = document.getElementById("idCliente").value;
+
+       window.location = "index.php?ruta=reportes&vendedor="+idCliente+"";
+       
+    };
 
 
 

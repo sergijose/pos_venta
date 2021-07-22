@@ -31,7 +31,8 @@ class ControladorVentas
       /*=============================================
 			ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 			=============================================*/
-      if ($_POST["listaProductos"] == "") { // Si no hay productos en la lista de ventas
+    
+        if ($_POST["listaProductos"] == "") { // Si no hay productos en la lista de ventas
         echo '<script>
 				swal({
 					  type: "error",
@@ -42,6 +43,24 @@ class ControladorVentas
 								if (result.value) {
 								window.location = "ventas";
 								}
+							})
+				</script>';
+        return;
+      }
+
+      $item = "estado_caja";
+      $valor = "abierto";
+      $respuesta = ControladorCaja::ctrMostrarCaja($item, $valor);
+
+      if (empty($respuesta)) {
+        echo '<script>
+				swal({
+					  type: "error",
+					  title: "No tienes Aperturado la caja para proceder la venta",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					 
+								
 							})
 				</script>';
         return;

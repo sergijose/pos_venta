@@ -48,6 +48,17 @@
 					</li>
 					<li>';
 				}
+				
+					echo '
+					 <li>
+						 <a href="caja">
+							 <i class="fa fa-money"></i>
+							 <span>Caja</span>
+						 </a>
+					 </li>
+					 <li>';
+				 
+ 
 
 
 				if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor"){

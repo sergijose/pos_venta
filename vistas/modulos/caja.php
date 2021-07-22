@@ -71,16 +71,14 @@
   </section>
   <section class="content">
     <div class="box">
-      <!--================= 
-        CONDICIONAL PARA VERIFICAR SI ABRIMOS O CERRAMOS CAJA 
-        ==================================-->
+<!--============ CONDICIONAL PARA VERIFICAR SI ABRIMOS O CERRAMOS CAJA ==================================-->
       <div class="box-header with-border">
         <?php
 
         $item = "estado_caja";
         $valor = "abierto";
         $respuesta = ControladorCaja::ctrMostrarCaja($item, $valor);
-        // Se asigna el valor a vació para setearlo después
+        // Se asigna el valor a vacio para setearlo después
         $idCaja = "";
 
         // Si la caja esta vacia, es decir si no hay ningun valor en la BD se muestra Boton Apertura de Caja
@@ -93,9 +91,7 @@
         }
         ?>
       </div>
-      <!--=============================================================== 
-        FINAL DE CONDICIONAL PARA VERIFICAR SI ABRIMOS O CERRAMOS CAJA 
-        =====================================================================-->
+<!--==================FINAL DE CONDICIONAL PARA VERIFICAR SI ABRIMOS O CERRAMOS CAJA =======================================-->
       <div class="box-body">
         <table class="table table-bordered table-striped dt-responsive tablas text-center" width="100%">
           <thead>

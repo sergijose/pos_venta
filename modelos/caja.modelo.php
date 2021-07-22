@@ -30,21 +30,23 @@ class ModeloCaja
   {
 
     // Se cambio el idEstadoCaja por estado_caja donde se maneja abierto o cerrado
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, monto_apertura, estado_caja,  monto_cierre) 
-			                                         VALUES (:nombre, :monto_apertura, :estado_caja, :monto_cierre)");
+    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, id_usuario, id_sucursal, monto_apertura, estado_caja,  monto_cierre) 
+			                                         VALUES (:nombre, :id_usuario, :id_sucursal,:monto_apertura, :estado_caja, :monto_cierre)");
 
-    $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-    $stmt->bindParam(":monto_apertura", $datos["monto_apertura"], PDO::PARAM_STR);
-    $stmt->bindParam(":estado_caja", $datos["estado_caja"], PDO::PARAM_STR); // Aquí se cambio el bindParam
-    $stmt->bindParam(":monto_cierre", $datos["monto_cierre"], PDO::PARAM_STR);
+    $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR); //Cambiar por variable SESSION :id_CajaSucursal ya que saldria
+    $stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT); // Usuario que realiza Apertura y Cierre
+    $stmt->bindParam(":id_sucursal", $datos["id_sucursal"], PDO::PARAM_INT);//Sucursal a la que pertenece la Caja
+    $stmt->bindParam(":monto_apertura", $datos["monto_apertura"], PDO::PARAM_STR);//Monto con que se abre Caja
+    $stmt->bindParam(":estado_caja", $datos["estado_caja"], PDO::PARAM_STR); // Abierto o Cerrado
+    $stmt->bindParam(":monto_cierre", $datos["monto_cierre"], PDO::PARAM_STR); //Monto con el que se cierra Caja
 
-    if ($stmt->execute()) {
-      return "ok";
-    } else {
-      return "error";
+    if($stmt->execute()){
+      return "ok";}
+    else{
+      return $stmt->errorInfo(); // Con esto me muestra el error en especifico
     }
-    // $stmt->close();
-    $stmt = null;
+    $stmt=null;
+
   }
   /*===================== 
   CIERRE DE  CAJA 

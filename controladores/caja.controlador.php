@@ -30,9 +30,9 @@ class ControladorCaja
 
         $tabla = "caja";
         $datos = array(
+          "nombre" => $_POST["nombreCaja"],
           "id_usuario" => $_POST["idVendedor"],
           "id_sucursal" => $_POST["idSucursal"],
-          "nombre" => $_POST["nombreCaja"],
           "monto_apertura" => $_POST["montoInicial"],
           "estado_caja" => $_POST["estadoCaja"],
           "monto_cierre" => $_POST["montoFinal"]

@@ -15,8 +15,9 @@ require_once "controladores/tipocomprobante.controlador.php";
 require_once "controladores/transferencias.controlador.php";
 require_once "controladores/concepto.controlador.php";
 require_once "controladores/proveedores.controlador.php";
+require_once "controladores/gastos.controlador.php";
 
-
+require_once "modelos/gastos.modelo.php";
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/categorias.modelo.php";
 require_once "modelos/productos.modelo.php";

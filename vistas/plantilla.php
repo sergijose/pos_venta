@@ -121,6 +121,7 @@ session_start([
         $_GET["ruta"] == "nota-venta" ||
         //Esta Vista es para el Administrador del Sistema
         $_GET["ruta"] == "caja" ||
+        $_GET["ruta"] == "gastos" ||
         //Esta Caja es con filtro para cada Usuario Vendedor
          $_GET["ruta"] == "cajas" ||
         $_GET["ruta"] == "reportes" ||
@@ -166,6 +167,7 @@ session_start([
  <script src="vistas/js/validafolio.js"></script>
   <!-- Aqui vamos para la Sucursal -->
   <script src="vistas/js/sucursal.js"></script>
+  <script src="vistas/js/gastos.js"></script>
   <script src="vistas/js/transferencia.js"></script>
   <script src="vistas/js/consultas.js"></script>
   <!-- <script src="vistas/js/reportes-compras.js"></script> -->

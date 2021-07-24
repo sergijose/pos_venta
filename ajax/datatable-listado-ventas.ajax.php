@@ -133,7 +133,7 @@ class TablaListadoVentas
         "' . $comprobante . '",
         "' . $neto . '",	
         "' . $total2 . '",
-        "' . $fecha . '",
+        "' . $value["fecha"] . '",
         "' . $botones . '"
         ],';
     }

@@ -35,7 +35,7 @@ class ControladorCaja
           "id_sucursal" => $_POST["idSucursal"],
           "monto_apertura" => $_POST["montoInicial"],
           "estado_caja" => $_POST["estadoCaja"],
-          "monto_cierre" => $_POST["montoFinal"]
+          "monto_cierre_caja" => $_POST["montoFinal"]
         );
 
         $respuesta = ModeloCaja::mdlAperturaCaja($tabla, $datos);
@@ -87,8 +87,8 @@ class ControladorCaja
       // Se cambia el estadoFinal a 2 opciones o abierto o cerrado
       if (
         preg_match('/^[0-9]+$/', $_POST["idCaja"]) &&
-        preg_match('/^(abierto|cerrado)$/', $_POST["estadoFinal"]) &&
-        preg_match('/^[0-9.]+$/', $_POST["monto_final"])
+        preg_match('/^(abierto|cerrado)$/', $_POST["estadoFinal"])
+      
       ) {
 
         $tabla = "caja";
@@ -96,7 +96,9 @@ class ControladorCaja
           "id_caja" => $_POST["idCaja"],
           "estado_caja" => $_POST["estadoFinal"],
           "fecha_cierre" => $_POST["fechaCierre"],
-          "monto_cierre" => $_POST["monto_final"]
+          "monto_cierre_ventas" => $_POST["monto_cierre_ventas"],
+          "monto_cierre_gastos" => $_POST["monto_cierre_gastos"],
+          "monto_cierre_total" => $_POST["monto_cierre_final"]
         );
 
 
@@ -137,5 +139,82 @@ class ControladorCaja
 			  	</script>';
       }
     }
+  }
+
+
+  /*=============================== 
+  APERTURA DE CAJA INICIAL
+  =============================================*/
+  static public function ctrAperturaCajaInicial()
+  {
+
+    if (isset($_POST["idVendedor"])) {
+
+      // Se cambia el estadoFinal a 2 opciones o abierto o cerrado
+      if (
+        preg_match('/^[0-9.]+$/', $_POST["montoInicial"]) 
+        
+      ) {
+
+        $tabla = "caja_inicial";
+        $datos = array(
+  
+          "id_usuario" => $_POST["idVendedor"],
+          "monto_inicial" => $_POST["montoInicial"],
+         
+        );
+
+        $respuesta = ModeloCaja::mdlAperturaCajaInicial($tabla, $datos);
+
+        if ($respuesta == "ok") {
+
+          echo '<script>
+
+					swal({
+						  type: "success",
+						  title: "CAJA INICIADA",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "caja";
+
+									}
+								})
+
+					</script>';
+        }
+      } else {
+        echo '<script>
+					swal({
+						  type: "error",
+						  title: "¡NO SE PUEDE INICIAR CAJA. Consulte con el Admin del Sistema!",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+							if (result.value) {
+
+							window.location = "caja";
+
+							}
+						})
+
+			  	</script>';
+      }
+    }
+  }
+
+
+
+  /*==================================== 
+  MOSTRAR LO EXISTENTE EN CAJA 
+  =============================================*/
+  static public function ctrMostrarCajaInicial($item, $valor)
+  {
+
+    $tabla = "caja_inicial";
+    $respuesta = ModeloCaja::mdlMostrarCajaInicial($tabla, $item, $valor);
+    return $respuesta;
   }
 } // FINAL DE LA CLASE ControladorCaja

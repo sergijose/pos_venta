@@ -57,6 +57,14 @@
 						 </a>
 					 </li>
 					 <li>';
+					 echo '
+					 <li>
+						 <a href="gastos">
+							 <i class="fa fa-money"></i>
+							 <span>gastos</span>
+						 </a>
+					 </li>
+					 <li>';
 				 
  
 

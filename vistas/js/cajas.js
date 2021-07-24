@@ -40,3 +40,10 @@ $(".tablaListadoCajas").DataTable({
   "pageLength":5
 
 });
+
+const botones = document.querySelector("#miBoton");
+// Agregar listener
+botones.addEventListener("click", function(evento){
+	// Aquí todo el código que se ejecuta cuando se da click al botón
+	console.log("Le has dado click");
+});

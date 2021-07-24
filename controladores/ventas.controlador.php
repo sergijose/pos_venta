@@ -59,8 +59,6 @@ class ControladorVentas
 					  title: "No tienes Aperturado la caja para proceder la venta",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar"
-					 
-								
 							})
 				</script>';
         return;
@@ -679,6 +677,16 @@ class ControladorVentas
 
     $tabla = "ventas";
     $respuesta = ModeloVentas::mdlSumaTotalVentas($tabla);
+    return $respuesta;
+  }
+
+  public static function ctrSumaTotalVentasXdia()
+  {
+
+    $tabla = "ventas";
+    $item="fecha";
+    $valor=date('Y-m-d');
+    $respuesta = ModeloVentas::mdlSumaTotalVentasXdia($tabla,$item,$valor);
     return $respuesta;
   }
   /*=============================================

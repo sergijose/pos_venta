@@ -185,4 +185,21 @@ MOSTRAR VENTAS CON FILTRO DE VENDEDOR
     // $stmt -> close();
     $stmt = null;
   }
+
+  static public function mdlSumaTotalVentasXdia($tabla,$item,$valor)
+  {
+
+    $stmt = Conexion::conectar()->prepare("SELECT SUM(total) as total FROM $tabla WHERE date($item) = date(:$item)");
+    
+    $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+    // Esto no sirve acá
+    // $stmt->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetch();
+    
+
+    // $stmt -> close();
+    $stmt = null;
+  }
 }

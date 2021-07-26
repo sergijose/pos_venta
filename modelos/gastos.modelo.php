@@ -46,14 +46,10 @@ class ModeloGastos
     $stmt = null;
   }
 
-  static public function mdlSumaTotalGastosXdia($tabla,$item,$valor)
+  static public function mdlSumaTotalGastosXdia($tabla,$fechaInicial,$fechaFinal)
   {
 
-    $stmt = Conexion::conectar()->prepare("SELECT SUM(precio) as total FROM $tabla WHERE $item <=:$item");
-    
-    $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-    // Esto no sirve acá
-    // $stmt->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+    $stmt = Conexion::conectar()->prepare("SELECT SUM(precio) as total FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinal'");
     $stmt->execute();
 
     return $stmt->fetch();

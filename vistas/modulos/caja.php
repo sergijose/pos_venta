@@ -84,6 +84,8 @@ error_reporting(0);
         $item1 = null;
         $valor1 = null;
         $respuesta1 = ControladorCaja::ctrMostrarCaja($item1, $valor1);
+        foreach ($respuesta1 as $key => $valueCaja) {
+        }
 
         $item2 = null;
         $valor2 = null;
@@ -412,13 +414,21 @@ error_reporting(0);
                   <span class="input-group-addon"><i>$</i></span>
                   <?php
                date_default_timezone_set('America/Lima');
-                  $item = "fecha";
-                  $fecha_cierre = date('Y-m-d H:i:s');
-                  $sumaVentas = ControladorVentas::ctrSumaTotalVentasXdia($item, $fecha_cierre);
-                    //OBTENER LOS GASTOS HASTA LA FECHA
-                  $item1 = "fecha";
-                  $fecha_cierre1 = date('Y-m-d H:i:s');
-                  $sumaGastos = ControladorGastos::ctrSumaTotalGastosXdia($item1, $fecha_cierre1);
+
+
+                  $fechaInicial =  $valueCaja["fecha_apertura"];
+                 // var_dump($fechaInicial);
+
+                  $fechafinal = date('Y-m-d H:i:s');
+                 // var_dump($fechafinal);
+                  $sumaVentas = ControladorVentas::ctrSumaTotalVentasXdia($fechaInicial, $fechaFinal);
+                 
+                 var_dump( $sumaVentas["total"]); 
+                  //OBTENER LOS GASTOS HASTA LA FECHA
+                  $fechaInicial1 =  $valueCaja["fecha_apertura"];
+                  $fechaFinal1 = date('Y-m-d H:i:s');
+                  $sumaGastos = ControladorGastos::ctrSumaTotalGastosXdia($fechaInicial1,$fecha_final1);
+                  //var_dump( $sumaGastos); 
                   $totalCaja= ($montoApertura+$sumaVentas["total"])-$sumaGastos["total"];
                   ?>
                   <input type="number" class="form-control" id="monto_cierre_ventas" name="monto_cierre_ventas" min="0" step="any" value="<?php echo $sumaVentas["total"];?>"required   >

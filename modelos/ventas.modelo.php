@@ -186,14 +186,13 @@ MOSTRAR VENTAS CON FILTRO DE VENDEDOR
     $stmt = null;
   }
 
-  static public function mdlSumaTotalVentasXdia($tabla,$item,$valor)
+  static public function mdlSumaTotalVentasXdia($tabla, $fechaInicial, $fechaFinal)
   {
 
-    $stmt = Conexion::conectar()->prepare("SELECT SUM(total) as total FROM $tabla WHERE $item <=:$item");
-    
-    $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-    // Esto no sirve acá
-    // $stmt->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+    $stmt = Conexion::conectar()->prepare("SELECT SUM(total) as total FROM $tabla WHERE fecha BETWEEN :fechaInicial AND :fechaFinal");
+    $stmt->bindParam(":fechaInicial", $fechaInicial, PDO::PARAM_STR);
+    $stmt->bindParam(":fechaFinal", $fechaFinal, PDO::PARAM_STR);
+
     $stmt->execute();
 
     return $stmt->fetch();

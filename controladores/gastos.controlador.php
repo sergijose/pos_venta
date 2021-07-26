@@ -72,11 +72,11 @@ class ControladorGastos
     return $respuesta;
   }
 
-  public static function ctrSumaTotalGastosXdia($item,$valor)
+  public static function ctrSumaTotalGastosXdia($fechaInicial,$fechaFinal)
   {
 
     $tabla = "gastos";
-    $respuesta = ModeloGastos::mdlSumaTotalGastosXdia($tabla,$item,$valor);
+    $respuesta = ModeloGastos::mdlSumaTotalGastosXdia($tabla,$fechaInicial,$fechaFinal);
     return $respuesta;
   }
 

@@ -46,6 +46,23 @@ class ModeloGastos
     $stmt = null;
   }
 
+  static public function mdlSumaTotalGastosXdia($tabla,$item,$valor)
+  {
+
+    $stmt = Conexion::conectar()->prepare("SELECT SUM(precio) as total FROM $tabla WHERE $item <=:$item");
+    
+    $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+    // Esto no sirve acá
+    // $stmt->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetch();
+    
+
+    // $stmt -> close();
+    $stmt = null;
+  }
+
   /*=============================================
 	EDITAR CATEGORIA
 	=============================================

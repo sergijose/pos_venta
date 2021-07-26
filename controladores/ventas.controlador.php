@@ -680,12 +680,10 @@ class ControladorVentas
     return $respuesta;
   }
 
-  public static function ctrSumaTotalVentasXdia()
+  public static function ctrSumaTotalVentasXdia($item,$valor)
   {
 
     $tabla = "ventas";
-    $item="fecha";
-    $valor=date('Y-m-d');
     $respuesta = ModeloVentas::mdlSumaTotalVentasXdia($tabla,$item,$valor);
     return $respuesta;
   }

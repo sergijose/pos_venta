@@ -72,6 +72,14 @@ class ControladorGastos
     return $respuesta;
   }
 
+  public static function ctrSumaTotalGastosXdia($item,$valor)
+  {
+
+    $tabla = "gastos";
+    $respuesta = ModeloGastos::mdlSumaTotalGastosXdia($tabla,$item,$valor);
+    return $respuesta;
+  }
+
   /*=============================================
 	EDITAR CATEGORIA
 	=============================================

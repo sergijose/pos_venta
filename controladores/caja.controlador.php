@@ -101,10 +101,16 @@ class ControladorCaja
           "monto_cierre_total" => $_POST["monto_cierre_final"]
         );
 
-
+        
+        $item1 = "monto_inicial";
+        $valorcierre = $_POST["monto_cierre_total"];
+       
+       
         $respuesta = ModeloCaja::mdlCierreCaja($tabla, $datos);
+        $actualizarMontoInicial = ModeloCaja::mdlActualizarCajaInicial($item1,$_POST["monto_cierre_final"]);
 
-        if ($respuesta == "ok") {
+
+        if ($respuesta=="ok") {
           echo '<script>
 
 					swal({
@@ -152,7 +158,7 @@ class ControladorCaja
 
       // Se cambia el estadoFinal a 2 opciones o abierto o cerrado
       if (
-        preg_match('/^[0-9.]+$/', $_POST["montoInicial"]) 
+        preg_match('/^[0-9.]+$/', $_POST["montoApertura"]) 
         
       ) {
 
@@ -160,7 +166,7 @@ class ControladorCaja
         $datos = array(
   
           "id_usuario" => $_POST["idVendedor"],
-          "monto_inicial" => $_POST["montoInicial"],
+          "monto_inicial" => $_POST["montoApertura"],
          
         );
 
@@ -204,6 +210,10 @@ class ControladorCaja
       }
     }
   }
+
+
+    /*=============================================
+
 
 
 

@@ -15,7 +15,7 @@
 //          </script>';
 //  return;
 //}
-//?> -->
+?> -->
 
 <script language="javascript" type="text/javascript">
   // INICIO DE VALIDADOR DE NUMEROS Y DECIMALES
@@ -94,17 +94,17 @@ error_reporting(0);
         $montoApertura= $value["monto_inicial"];
         }
         else{
-          $montoApertura=0;
+          $montoApertura= $value["monto_inicial"];
         }
+      
         
         $hoy=date('Y-m-d');
         
         //capturar las ventas de hoy
 
         
-        $ventasHoy = ControladorVentas::ctrSumaTotalVentasXdia();
-        foreach ($ventasHoy as $key => $valueHoy) {
-        }
+       
+        
           //capturamos el monto de apertura
           
 
@@ -120,7 +120,7 @@ error_reporting(0);
           } else {
             // Se setea con el id de la caja que esta abierta para usarlo en el modal cierra caja
             $idCaja = $respuesta["id_caja"];
-            echo '<button class="btn btn-danger" data-toggle="modal" data-target="#modalCierraCaja"><i></i>Cierre Caja</button>';
+            echo '<button class="btn btn-danger" data-toggle="modal" data-target="#modalCierraCaja" id="cierreCaja"><i></i>Cierre Caja</button>';
           }
 
         }
@@ -225,20 +225,23 @@ error_reporting(0);
           <!--================= CABEZA DEL MODAL ==================================-->
           <div class="modal-header" style="background:#3c8dbc; color:white">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><strong>INICIAR DE CAJA</strong></h4>
+            <h4 class="modal-title"><strong>INICIO DE CAJA</strong></h4>
           </div>
           <!--============================= CUERPO DEL MODAL ======================================-->
           <div class="modal-body">
             <div class="box-body">
               <!-- ENTRADA PARA MONTO INICIAL -->
               <div class="form-group">
-                <label>Monto Inicial</label>
+                <label>Monto a Iniciar</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-                  <input type="number" class="form-control" id="montoInicial" name="montoInicial" min="1" step="any" placeholder="Monto Apertura"
+                  <input type="number" class="form-control" id="montoApertura" name="montoApertura" min="1" step="any" placeholder="Monto Apertura"
                   value="" required>
                 </div>
               </div>
+              
+              <h5 class="modal-title"><strong>DATOS:</strong></h5>
+              <br>
               <!-- NOMBRE DE USUARIO A CARGO DE CAJA -->
               <div class="form-group">
                 <label>Cajero:</label>
@@ -246,6 +249,17 @@ error_reporting(0);
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                   <input type="text" class="form-control" id="nuevoVendedor" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
                   <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
+                </div>
+              </div> 
+
+                <!-- NOMBRE DE USUARIO A CARGO DE CAJA -->
+                <div class="form-group">
+                <label>Fecha Registro:</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input type="text" class="form-control" id="nuevoVendedor" value="<?php  date_default_timezone_set('America/Bogota'); setlocale(LC_TIME, "spanish");
+              echo strftime("%A %d de %B del %Y"); ?>" readonly>
+                 
                 </div>
               </div> 
               <!-- NOMBRE DE SUCURSAL DE CAJA --> 
@@ -276,11 +290,12 @@ error_reporting(0);
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
             <button type="submit" class="btn btn-primary"><i></i>Iniciar Caja</button>
           </div>
-          <?php
+       
+        </form>
+        <?php
           $aperturaCajaInicial = new ControladorCaja();
           $aperturaCajaInicial->ctrAperturaCajaInicial();
           ?>
-        </form>
       </div>
     </div>
   </div>
@@ -304,7 +319,7 @@ error_reporting(0);
                 <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
 
-                  <input type="number" class="form-control" id="montoInicial" name="montoInicial" min="1" step="any" value="<?php echo $montoApertura;?>" required readonly>
+                  <input type="number" class="form-control" id="montoInicial" name="montoInicial" min="1" step="any" value="<?php echo   $montoApertura;?>" required >
                 </div>
               </div>
               <!-- NOMBRE DE USUARIO A CARGO DE CAJA -->
@@ -331,7 +346,7 @@ error_reporting(0);
               </div>
               <!-- MONTO DE CIERRE DE LA CAJA -->
               <div class="form-group">
-                <input type="hidden" value="0" class="form-control" id="montoFinal" name="montoFinal" required readonly>
+                <input type="hidden" value="0" class="form-control" id="montoFinal" name="montoFinal" required>
               </div> 
         
             </div>
@@ -356,7 +371,7 @@ error_reporting(0);
   <!--================= 
     INICIO DE MODAL CIERRE DE CAJA 
     ==================================-->
-  </section>
+ 
   <div id="modalCierraCaja" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -380,28 +395,49 @@ error_reporting(0);
                 <!-- Se añade input oculto para el id -->
                 <input type="hidden" value="<?php echo ($idCaja != "") ? $idCaja : '' ?>" class="form-control" id="idCaja" name="idCaja" required>
               </div>
+               <!-- ENTRADA PARA MONTO DE CAJA -->
+               <div class="form-group">
+                <label>Monto en caja</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i>$</i></span>
+                  <input type="number" class="form-control" id="monto_apertura" name="monto_apertura" min="0" step="any" value="<?php echo $montoApertura;?>" required  >
+                </div>
+              </div>
               <!-- ENTRADA PARA MONTO CIERRE DE GASTOS-->
+
+            
               <div class="form-group">
                 <label>Monto de Cierre de ventas del dia</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i>$</i></span>
-                  <input type="number" class="form-control" id="monto_cierre_ventas" name="monto_cierre_ventas" min="0" step="any" value=""required  onchange="SumarAutomatico(this.value);">
+                  <?php
+               date_default_timezone_set('America/Lima');
+                  $item = "fecha";
+                  $fecha_cierre = date('Y-m-d H:i:s');
+                  $sumaVentas = ControladorVentas::ctrSumaTotalVentasXdia($item, $fecha_cierre);
+                    //OBTENER LOS GASTOS HASTA LA FECHA
+                  $item1 = "fecha";
+                  $fecha_cierre1 = date('Y-m-d H:i:s');
+                  $sumaGastos = ControladorGastos::ctrSumaTotalGastosXdia($item1, $fecha_cierre1);
+                  $totalCaja= ($montoApertura+$sumaVentas["total"])-$sumaGastos["total"];
+                  ?>
+                  <input type="number" class="form-control" id="monto_cierre_ventas" name="monto_cierre_ventas" min="0" step="any" value="<?php echo $sumaVentas["total"];?>"required   >
                 </div>
               </div>
-                <!-- ENTRADA PARA CIERRE DE GASTOS -->
+                <!-- ENTRADA PARA SUMA  DE GASTOS -->
                 <div class="form-group">
                 <label>Monto de Cierre de gastos</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i>$</i></span>
-                  <input type="number" class="form-control" id="monto_cierre_gastos" name="monto_cierre_gastos" min="0" step="any" value="" required  onchange="SumarAutomatico(this.value);">
+                  <input type="number" class="form-control" id="monto_cierre_gastos" name="monto_cierre_gastos" min="0" step="any" value="<?php echo $sumaGastos["total"];?>" required  >
                 </div>
               </div>
                <!-- ENTRADA PARA MONTO DE CIERRE CAJA -->
                <div class="form-group">
                 <label>Monto total de cierre de caja</label>
                 <div class="input-group">
-                  <span class="input-group-addon"><i>$</i></span>
-                  <input type="number" class="form-control" id="monto_cierre_final" name="monto_cierre_final" min="0" step="any" value="" readonly required >
+                  <span class="input-group-addon"><i>$</i></span> 
+                  <input type="number" class="form-control" id="monto_cierre_final" name="monto_cierre_final" min="0" step="any" value="<?php echo $totalCaja;?>" readonly required >
                 </div>
               </div>
               <!-- ENTRADA PARA FECHA DE CIERRE DE CAJA -->

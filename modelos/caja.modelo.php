@@ -171,5 +171,25 @@ EDITAR USUARIO
     // $stmt->close();
     $stmt = null;
   }
+
+  //ACTUALIZAR CAJA INICIAL
+  static public function mdlActualizarCajaInicial($item1,$valor1)
+  {
+
+    $stmt = Conexion::conectar()->prepare("UPDATE caja_inicial SET $item1 = :$item1  WHERE id=1");
+
+    $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_INT);
+
+    if ($stmt->execute()) {
+
+      return "ok";
+    } else {
+
+      return "error";
+    }
+    // $stmt->close();
+    $stmt = null;
+  }
+  
   
 }

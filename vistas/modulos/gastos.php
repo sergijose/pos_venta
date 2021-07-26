@@ -50,12 +50,15 @@ if ($_SESSION["perfil"] != "Administrador") {
             $item = null;
             $valor = null;
             $gastos = ControladorGastos::ctrMostrarGastos($item, $valor);
-          
+
+         
             foreach ($gastos as $key => $value) {
               echo ' <tr>
-                     <td>' . ($key + 1) . '</td>                   
-                      
-                      <td>' . $value["id_usuario"] . '</td>
+                     <td>' . ($key + 1) . '</td>';           
+                     $itemUsuario = "id";
+                     $valorUsuario = $value["id_usuario"];
+                     $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);       
+                  echo  '<td>' .$respuestaUsuario["nombre"] . '</td>
                       <td>' . $value["destino"] . '</td>
                       <td>' . $value["descripcion"] . '</td>
                       <td>' . $value["cantidad"] . '</td>

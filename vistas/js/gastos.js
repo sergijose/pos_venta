@@ -43,9 +43,9 @@ $('.tablaGastos').DataTable( {
   "pageLength":5
 
 });
-/* Funcion suma. */
+/* Funcion suma.
 function SumarAutomatico (valor) {
-    var TotalSuma = 0;  
+	var TotalSuma = 0;  
     valor = parseInt(valor); // Convertir a numero entero (número).
     totalCierre = document.getElementById('monto_cierre_ventas').value;
     totalGastos = document.getElementById('monto_cierre_gastos').value;
@@ -54,10 +54,12 @@ function SumarAutomatico (valor) {
   //  console.log(totalSuma);
     // Valida y pone en cero "0".
   
-    /* Variable genrando la suma. */
+    Variable genrando la suma. 
     TotalSuma = Number(totalCierre) - Number(totalGastos);
     console.log(TotalSuma);
     // Escribir el resultado en una etiqueta "span".
-    $("#monto_cierre_final").val(TotalSuma);
+	document.getElementById("monto_cierre_final").value=TotalSuma;  
+    //$("#monto_cierre_final").val(TotalSuma);
    
-}
+
+*/

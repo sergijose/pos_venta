@@ -168,6 +168,7 @@ session_start([
   <!-- Aqui vamos para la Sucursal -->
   <script src="vistas/js/sucursal.js"></script>
   <script src="vistas/js/gastos.js"></script>
+  <script src="vistas/js/cajas.js"></script>
   <script src="vistas/js/transferencia.js"></script>
   <script src="vistas/js/consultas.js"></script>
   <!-- <script src="vistas/js/reportes-compras.js"></script> -->

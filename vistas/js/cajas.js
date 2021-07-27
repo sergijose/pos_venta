@@ -41,9 +41,12 @@ $(".tablaListadoCajas").DataTable({
 
 });
 
-const botones = document.querySelector("#miBoton");
-// Agregar listener
-botones.addEventListener("click", function(evento){
-	// Aquí todo el código que se ejecuta cuando se da click al botón
-	console.log("Le has dado click");
-});
+
+
+
+/*=============================================VER DETALLDE DE CAJA=============================================*/
+$(".tablas").on("click", ".btnImprimirCaja", function () {
+	console.log("hola");
+	var codigoCaja = $(this).attr("idCaja");
+	window.open("extensiones/tcpdf/pdf/cajas.php?idCaja=" + codigoCaja, "_blank");
+  })

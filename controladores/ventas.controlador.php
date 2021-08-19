@@ -366,8 +366,9 @@ class ControladorVentas
           if (($traerVentas[$key]["id_cliente"] == $traerVenta[$key]["id_cliente"])) {
 
             array_push($guardarFechas, $traerVentas[$key]["fecha"]);
-          };
-
+          }
+        }
+      }
 			if(count($guardarFechas) > 1){
 
 				if($traerVenta[$key]["fecha"] > $guardarFechas[$key][count($guardarFechas)-2]){
@@ -402,10 +403,10 @@ class ControladorVentas
           /*=============================================
 			FORMATEAR TABLA DE PRODUCTOS Y LA DE CLIENTES
 			=============================================*/
-          foreach ($traerVentas as $key => $value) {
-            $productos =  json_decode($traerVentas[$key]["productos"], true);
-          };
-          //var_dump($productos);
+         // foreach ($traerVentas as $key => $value) {
+            $productos =  json_decode($traerVenta[$key]["productos"], true);
+          //};
+          var_dump($productos);
 
           $totalProductosComprados = array();
 
@@ -423,7 +424,9 @@ class ControladorVentas
             
             $item1a = "ventas";
             $valor1a = $traerProducto["ventas"] - $value["cantidad"];
-            var_dump($valor1a);
+            var_dump( $traerProducto["ventas"]);
+            var_dump( $value["cantidad"]);
+            //var_dump($valor1a);
             $nuevasVentas = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1a, $valor1a, $valor);
 
             $item1b = "stock";
@@ -435,14 +438,14 @@ class ControladorVentas
           $tablaClientes = "clientes";
 
           $itemCliente = "id";
-          //	$valorCliente = $traerVenta["id_cliente"];
+          	$valorCliente = $traerVenta["id_cliente"];
 
-          //	$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $itemCliente, $valorCliente);
+          	$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $itemCliente, $valorCliente);
 
           $item1a = "compras";
-          //	$valor1a = $traerCliente["compras"] - array_sum($totalProductosComprados);
+          	$valor1a = $traerCliente["compras"] - array_sum($totalProductosComprados);
 
-          //$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1a, $valor1a, $valorCliente);
+          $comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1a, $valor1a, $valorCliente);
 
           /*=============================================
 			ELIMINAR VENTA
@@ -469,9 +472,9 @@ class ControladorVentas
 
 				</script>';
           }
-        }
+        
       }
-    }
+    
   }
 
   /*==================================== 

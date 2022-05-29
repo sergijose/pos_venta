@@ -26,7 +26,7 @@ if ($_SESSION["perfil"] != "Administrador") {
       </div>
       <div class="box-body">
 
-        <table class="table table-bordered table-striped dt-responsive tablaProductos text-center" width="100%">
+        <table class="table table-bordered table-striped dt-responsive tablaProductosPorVencer text-center" width="100%">
 
           <thead>
             <tr>

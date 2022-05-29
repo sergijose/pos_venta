@@ -10,19 +10,19 @@ require_once "../controladores/sucursal.controlador.php";
 require_once "../modelos/sucursal.modelo.php";
 
 
-class TablaProductos
+class TablaProductosfiltro
 {
 
   /*======================================= 
   MOSTRAR LA TABLA DE PRODUCTOS 
   ===================================*/
-  public function mostrarTablaProductos()
+  public function mostrarTablaProductosFiltro()
   {
 
     $item = null;
     $valor = null;
     $orden = "id";
-    $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+    $productos = ControladorProductos::ctrMostrarProductosVencidos();
     //SI LA TABLA ESTA VACIA SE MOSTRARA DE IGUAL FORMA LOS PRODUCTOS CON ESTA CONDICIONAL
     if (count($productos) != 0) {
       $datosJson = '{
@@ -89,5 +89,5 @@ class TablaProductos
 /*=============================================
 ACTIVAR TABLA DE PRODUCTOS 
 =============================================*/
-$activarProductos = new TablaProductos();
-$activarProductos->mostrarTablaProductos();
+$activarProductos = new TablaProductosfiltro();
+$activarProductos->mostrarTablaProductosFiltro();

@@ -1,12 +1,12 @@
 
 
 
- $.ajax({
-  url: "ajax/datatable-listado-ventas.ajax.php",
-  success:function(respuesta){
-  console.log("respuesta", respuesta);
-  }
-});// 
+ //$.ajax({
+  //url: "ajax/datatable-listado-ventas.ajax.php",
+  //success:function(respuesta){
+ // console.log("respuesta", respuesta);
+  //}
+//});// 
 
 
 var perfilOculto = $("#perfilOculto").val();

@@ -1,3 +1,21 @@
+ <?php
+ /*=============================================
+					ACTUALIZAR NOTIFICACIONES NUEVOS PRODUCTOS VENCIDOS Y POR VENCER
+					=============================================*/  
+          $productosVencidos =ModeloNotificaciones::mdlCantidadProductosVencidos();
+          $totalProductosVencidos=count($productosVencidos);
+          //var_dump($totalProductosVencidos);
+					ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", "nuevos_productos_vencidos", $totalProductosVencidos);
+
+          /*=============================================
+					ACTUALIZAR NOTIFICACIONES NUEVOS PRODUCTOS VENCIDOS Y POR VENCER
+					=============================================*/  
+          $productosPorVencer =ModeloNotificaciones::mdlProductosPorVencer();
+          $totalProductosPorVencer=count($productosPorVencer);
+        //  var_dump($totalProductosVencidos);
+					ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", "nuevos_productos_por_vencer", $totalProductosPorVencer);
+
+					?>
  <header class="main-header">
 <!--=====================================BARRA DE NAVEGACIÓN======================================-->
 	 <nav class="navbar navbar-static-top" role="navigation">
@@ -8,6 +26,15 @@
 		<!-- perfil de usuario -->
 		<div class="navbar-custom-menu">			
 			<ul class="nav navbar-nav">
+
+			<?php
+
+		include "cabezote/notificaciones.php";
+
+
+
+				?>
+				
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<?php

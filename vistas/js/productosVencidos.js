@@ -2,14 +2,14 @@
 CARGAR LA TABLA DINÁMICA DE PRODUCTOS PRINCIPAL 
 =============================================*/
 //$.ajax({
-	//url: "ajax/datatable-productos-filtro.ajax.php",
-	//success:function(respuesta){	
+//	url: "ajax/datatable-productos-vencidos.ajax.php",
+//	success:function(respuesta){	
 //	console.log("respuesta", respuesta);
 //	}
 //})
 var perfilOculto = $("#perfilOculto").val();
-$('.tablaProductos').DataTable( {
-    "ajax": "ajax/datatable-productos.ajax.php?perfilOculto="+perfilOculto,
+$('.tablaProductosVencidos').DataTable( {
+    "ajax": "ajax/datatable-productos-vencidos.ajax.php?perfilOculto="+perfilOculto,
     "deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -142,7 +142,7 @@ VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
 /*=============================================
 EDITAR PRODUCTO
 =============================================*/
-$(".tablaProductos tbody").on("click", "button.btnEditarProducto", function () {
+$(".tablaProductosVencidos tbody").on("click", "button.btnEditarProducto", function () {
 
 	var idProducto = $(this).attr("idProducto");
 	// console.log("idProducto", idProducto);
@@ -226,7 +226,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function () {
 /*=============================================
 ELIMINAR PRODUCTO
 =============================================*/
-$(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function () {
+$(".tablaProductosVencidos tbody").on("click", "button.btnEliminarProducto", function () {
 	var idProducto = $(this).attr("idProducto");
 	var codigo = $(this).attr("codigo");
 	var imagen = $(this).attr("imagen");

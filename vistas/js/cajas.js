@@ -3,6 +3,7 @@
 //var sedeoculta = $("#sedeoculta").val();
 var idUsuario = $("#idUsuario").val();
 
+
 /*HACEMOS MENCION A LA CLASE DE LA TABLA Y AL AJAX QUE UTILIZAREMOS*/
 $(".tablaListadoCajas").DataTable({
     "ajax": "ajax/datatable-listado-cajas.ajax.php?idUsuario="+idUsuario,

@@ -23,6 +23,7 @@ session_start([
   <!--=====================================
   PLUGINS DE CSS
   ======================================-->
+
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="vistas/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Select2 -->
@@ -85,6 +86,7 @@ session_start([
   <script src="vistas/bower_components/morris.js/morris.min.js"></script>
   <!-- ChartJS http://www.chartjs.org/-->
   <script src="vistas/bower_components/chart.js/Chart.js"></script>
+  
 
 </head>
 <!--================= 
@@ -109,6 +111,8 @@ session_start([
         $_GET["ruta"] == "usuarios" ||
         $_GET["ruta"] == "categorias" ||
         $_GET["ruta"] == "productos" ||
+        $_GET["ruta"] == "productos-vencidos" ||
+        $_GET["ruta"] == "productos-por-vencer" ||
         $_GET["ruta"] == "productos-sucursal" ||
         $_GET["ruta"] == "clientes" ||
         $_GET["ruta"] == "proveedores" ||
@@ -153,9 +157,12 @@ session_start([
   ?>
 
   <script src="vistas/js/plantilla.js"></script>
+ <!-- <script src="vistas/js/gestorNotificaciones.js"></script>-->
   <script src="vistas/js/usuarios.js"></script>
   <script src="vistas/js/categorias.js"></script>
   <script src="vistas/js/productos.js"></script>
+  <script src="vistas/js/productosVencidos.js"></script>
+  <script src="vistas/js/productosPorVencer.js"></script>
   <script src="vistas/js/productos_sucursal.js"></script>
   <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/proveedores.js"></script>
@@ -171,6 +178,7 @@ session_start([
   <script src="vistas/js/cajas.js"></script>
   <script src="vistas/js/transferencia.js"></script>
   <script src="vistas/js/consultas.js"></script>
+  
   <!-- <script src="vistas/js/reportes-compras.js"></script> -->
 
 </body>

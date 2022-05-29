@@ -83,6 +83,7 @@ class ControladorProductos
             imagepng($destino, $ruta);
           }
         }
+     
 
         $tabla = "productos";
         $datos = array(
@@ -94,15 +95,14 @@ class ControladorProductos
           "precio_compra" => $_POST["nuevoPrecioCompra"],
           "precio_venta" => $_POST["nuevoPrecioVenta"],
           "descripcion" => $_POST["nuevaDescripcion"],
+          "fecha_vencimiento" => $_POST["nuevaFechaVencimiento"],
           "imagen" => $ruta
         );
 
         $respuesta = ModeloProductos::mdlIngresarProducto($tabla, $datos);
-
-        // var_dump($respuesta);
-        // return;
-
+      
         if ($respuesta == "ok") {
+        
           echo '<script>
 						swal({
 							  type: "success",
@@ -218,15 +218,18 @@ class ControladorProductos
           "stock" => $_POST["editarStock"],
           "precio_compra" => $_POST["editarPrecioCompra"],
           "precio_venta" => $_POST["editarPrecioVenta"],
+          "fecha_vencimiento" => $_POST["editarFechaVencimiento"],
           "descripcion" => $_POST["editarDescripcion"],
           "imagen" => $ruta);
 
         $respuesta = ModeloProductos::mdlEditarProducto($tabla, $datos);
-        // var_dump($respuesta);
-        // var_dump($datos);
-        // var_dump($respuesta);
+        
+
+       
 
         if ($respuesta == "ok") {
+
+         
 
           echo '<script>
 
@@ -285,7 +288,12 @@ class ControladorProductos
 
       $respuesta = ModeloProductos::mdlEliminarProducto($tabla, $datos);
 
+
+      
+
       if ($respuesta == "ok") {
+
+         
 
         echo '<script>
 
@@ -316,4 +324,29 @@ class ControladorProductos
     $respuesta = ModeloProductos::mdlMostrarSumaVentas($tabla);
     return $respuesta;
   }
+
+
+   /*=============================================
+  MOSTRAR PRODUCTOS CON FILTRO 
+  =============================================*/
+  static public function ctrMostrarProductosVencidos()
+  {
+   
+    $respuesta = ModeloProductos::mdlCantidadProductosVencidos();
+    return $respuesta;
+  }
+
+
+     /*=============================================
+  MOSTRAR PRODUCTOS POR VENCER 
+  =============================================*/
+  static public function ctrMostrarProductosPorVencer()
+  {
+   
+    $respuesta = ModeloProductos::mdlProductosPorVencer();
+    return $respuesta;
+  }
+
+
+
 }

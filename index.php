@@ -16,6 +16,7 @@ require_once "controladores/transferencias.controlador.php";
 require_once "controladores/concepto.controlador.php";
 require_once "controladores/proveedores.controlador.php";
 require_once "controladores/gastos.controlador.php";
+require_once "controladores/notificaciones.controlador.php";
 
 require_once "modelos/gastos.modelo.php";
 require_once "modelos/usuarios.modelo.php";
@@ -32,6 +33,7 @@ require_once "modelos/tipocomprobante.modelo.php";
 require_once "modelos/transferencias.modelo.php";
 require_once "modelos/concepto.modelo.php";
 require_once "modelos/proveedores.modelo.php";
+require_once "modelos/notificaciones.modelo.php";
 
 
 $plantilla = new ControladorPlantilla();

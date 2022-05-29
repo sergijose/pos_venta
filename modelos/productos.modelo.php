@@ -16,7 +16,7 @@ class ModeloProductos
       return $stmt->fetch();
     } else {
 
-      $stmt = Conexion::conectar()->prepare("SELECT *, DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha  FROM $tabla ORDER BY $orden DESC");
+      $stmt = Conexion::conectar()->prepare("SELECT *, DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha,DATE_FORMAT(fecha_vencimiento, '%d/%m/%Y') AS fecha_vencimiento FROM $tabla ORDER BY $orden DESC");
       $stmt->execute();
       return $stmt->fetchAll();
     }
@@ -78,7 +78,7 @@ class ModeloProductos
   static public function mdlIngresarProducto($tabla, $datos)
   {
 
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, idSucursal, codigo, nombre, imagen, stock, precio_compra, precio_venta, descripcion) VALUES (:id_categoria, :idSucursal, :codigo,  :nombre, :imagen, :stock, :precio_compra, :precio_venta, :descripcion)");
+    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, idSucursal, codigo, nombre, imagen, stock, precio_compra, precio_venta, descripcion,fecha_vencimiento) VALUES (:id_categoria, :idSucursal, :codigo,  :nombre, :imagen, :stock, :precio_compra, :precio_venta, :descripcion,:fecha_vencimiento)");
 
     $stmt->bindParam(":id_categoria",  $datos["id_categoria"],  PDO::PARAM_INT);
     $stmt->bindParam(":idSucursal",    $datos["idSucursal"],    PDO::PARAM_INT);
@@ -89,6 +89,7 @@ class ModeloProductos
     $stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
     $stmt->bindParam(":precio_venta",  $datos["precio_venta"],  PDO::PARAM_STR);
     $stmt->bindParam(":descripcion",   $datos["descripcion"],   PDO::PARAM_STR);
+    $stmt->bindParam(":fecha_vencimiento",   $datos["fecha_vencimiento"],   PDO::PARAM_STR);
 
     if($stmt->execute()){
       return "ok";}
@@ -105,7 +106,7 @@ class ModeloProductos
   static public function mdlEditarProducto($tabla, $datos)
   {
 
-    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria=:id_categoria,idSucursal=:idSucursal ,codigo=:codigo, nombre=:nombre, imagen=:imagen, stock=:stock, precio_compra=:precio_compra, precio_venta=:precio_venta, descripcion= :descripcion where id=:id");
+    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_categoria=:id_categoria,idSucursal=:idSucursal ,codigo=:codigo, nombre=:nombre, imagen=:imagen, stock=:stock, precio_compra=:precio_compra, precio_venta=:precio_venta,fecha_vencimiento=:fecha_vencimiento, descripcion= :descripcion where id=:id");
 
     $stmt->bindParam(":id_categoria",  $datos["id_categoria"],  PDO::PARAM_INT);
     $stmt->bindParam(":idSucursal",    $datos["idSucursal"],    PDO::PARAM_INT);
@@ -116,6 +117,7 @@ class ModeloProductos
     $stmt->bindParam(":stock",         $datos["stock"],         PDO::PARAM_STR);
     $stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
     $stmt->bindParam(":precio_venta",  $datos["precio_venta"],  PDO::PARAM_STR);
+    $stmt->bindParam(":fecha_vencimiento",   $datos["fecha_vencimiento"],   PDO::PARAM_STR);
     $stmt->bindParam(":descripcion",   $datos["descripcion"],   PDO::PARAM_STR);
 
     if ($stmt->execute()) {
@@ -172,4 +174,35 @@ class ModeloProductos
     // $stmt->close();
     $stmt = null;
   }
+
+
+  	/*=============================================
+	MOSTRAR PRODUCTO VENCIDOS
+	=============================================*/
+
+	static public function mdlCantidadProductosVencidos(){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM productos where fecha_vencimiento <=NOW()");
+
+		$stmt -> execute();
+		return $stmt -> fetchAll();
+		
+			$stmt = null;
+	}
+
+  /*=============================================
+	MOSTRAR PRODUCTO QUE VENCERAN DENTRO DE UN MES
+	=============================================*/
+
+	static public function mdlProductosPorVencer(){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * from productos
+		WHERE fecha_vencimiento BETWEEN NOW() AND  DATE_ADD(NOW(), interval 1 month);");
+
+		$stmt -> execute();
+		return $stmt -> fetchAll();
+		
+			$stmt = null;
+	}
+
 }

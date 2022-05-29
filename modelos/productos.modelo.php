@@ -182,7 +182,7 @@ class ModeloProductos
 
 	static public function mdlCantidadProductosVencidos(){
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM productos where fecha_vencimiento <=NOW()");
+		$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha_vencimiento, '%d/%m/%Y') AS fecha_vencimiento FROM productos where fecha_vencimiento <=NOW()");
 
 		$stmt -> execute();
 		return $stmt -> fetchAll();
@@ -196,7 +196,7 @@ class ModeloProductos
 
 	static public function mdlProductosPorVencer(){
 
-		$stmt = Conexion::conectar()->prepare("SELECT * from productos
+		$stmt = Conexion::conectar()->prepare("SELECT *, DATE_FORMAT(fecha_vencimiento, '%d/%m/%Y') AS fecha_vencimiento from productos
 		WHERE fecha_vencimiento BETWEEN NOW() AND  DATE_ADD(NOW(), interval 1 month);");
 
 		$stmt -> execute();

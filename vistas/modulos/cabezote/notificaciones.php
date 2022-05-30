@@ -1,10 +1,10 @@
 <?php
 
-if($_SESSION["perfil"] == "administrador"){
+//if($_SESSION["perfil"] == "administrador"){
 
 
-return ;
-}
+//return ;
+//}
 
 $notificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
 

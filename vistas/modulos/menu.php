@@ -40,7 +40,7 @@
 					</li>-->';
 				}
 
-              if($_SESSION["perfil"] == "Administrador"){
+              if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor" ){
 			       echo '
 					<li>
 						<a href="productos">

@@ -22,8 +22,8 @@ class ControladorGastos
           "precio" => $_POST["nuevoPrecio"]);
 
         $respuesta = ModeloGastos::mdlIngresarGastos($tabla, $datos);
-		var_dump($datos);
-			var_dump($respuesta);
+	//	var_dump($datos);
+		//	var_dump($respuesta);
         if ($respuesta == "ok") {
           echo '<script>
 					swal({

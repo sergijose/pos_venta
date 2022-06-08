@@ -32,10 +32,11 @@ $fechaInicial = $respuestaCaja["fecha_apertura"];
 $fechaFinal = $respuestaCaja["fecha_cierre"];
 
 //Decodificamos el JSON productos que se grabó en la tabla ventas
-$montoApertura =  $respuestaCaja["monto_apertura"];
-$montoCierreVentas =  $respuestaCaja["monto_cierre_ventas"];
-$montoCierreGastos =  $respuestaCaja["monto_cierre_gastos"];
-$montoCierreTotal =  $respuestaCaja["monto_cierre_total"];
+
+$montoApertura =  number_format($respuestaCaja["monto_apertura"],2);
+$montoCierreVentas =  number_format($respuestaCaja["monto_cierre_ventas"],2);
+$montoCierreGastos = number_format( $respuestaCaja["monto_cierre_gastos"],2);
+$montoCierreTotal =  number_format($respuestaCaja["monto_cierre_total"],2);
 
 
 
@@ -81,13 +82,13 @@ $bloque1 = <<<EOF
 	</tr>
 	<br>
 	<tr>
-	<td style="width:40px;"><b>DESDE:</b></td>
-	<td style="width:100px;">$fechaInicial </td>
+	<td style="width:30px;"><b>DESDE:</b></td>
+	<td style="width:80px;">$fechaInicial </td>
 	</tr>
 	<br>
 
 	<tr>
-	<td style="width:40px;"><b>HASTA:</b></td>
+	<td style="width:30px;"><b>HASTA:</b></td>
 	<td style="width:100px;">$fechaFinal </td>
 	</tr>
 	<div  style="text-align:center;font-size:7px;">*******************************************************</div>
@@ -95,33 +96,33 @@ $bloque1 = <<<EOF
 
 	<tr>
 	<td style="width:60px;"><b>VENDEDOR</b></td>
-	<td style="width:100px;">$respuestaUsuario[nombre] </td>
+	<td style="width:60px;">$respuestaUsuario[nombre] </td>
 	</tr>
 	<br>
 
 	<tr>
-	<td style="width:60px;"><b>Monto Inicial:</b></td>
+	<td style="width:80px;"><b>Monto Inicial:</b></td>
 	<td style="width:100px;">S/ $montoApertura</td>
 	</tr>
 
 
 	<tr>
-	<td style="width:60px;"><b>Total ventas:</b></td>
+	<td style="width:80px;"><b>Total ventas:</b></td>
 	<td style="width:100px;">S/ $montoCierreVentas</td>
 	</tr>
 
 	<tr>
-	<td style="width:60px;"><b>Total Gastos:</b></td>
+	<td style="width:80px;"><b>Total Gastos:(resta)</b></td>
 	<td style="width:100px;">S/ $montoCierreGastos</td>
 	</tr>
 	<tr>
-	<td style="width:60px;"></td>
-	<td style="width:100px;">---------------------</td>
+	<td style="width:70px;"></td>
+	<td style="width:100px;">-----------------------</td>
 	</tr>
 	<br>
 
 	<tr>
-	<td style="width:60px;font-size:7px"><b>TOTAL EN CAJA:</b></td>
+	<td style="width:70px;font-size:7px"><b>TOTAL EN CAJA:</b></td>
 	<td style="width:100px;font-size:12px">S/ $montoCierreTotal</td>
 	</tr>
 

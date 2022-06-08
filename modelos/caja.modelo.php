@@ -17,7 +17,7 @@ class ModeloCaja
 
       $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll();
     }
 
     // $stmt->close();
@@ -65,9 +65,9 @@ class ModeloCaja
 
     $stmt->bindParam(":estado_caja", $datos["estado_caja"], PDO::PARAM_STR);
     $stmt->bindParam(":fecha_cierre", $datos["fecha_cierre"], PDO::PARAM_STR);
-    $stmt->bindParam(":monto_cierre_ventas", $datos["monto_cierre_ventas"], PDO::PARAM_INT);
-    $stmt->bindParam(":monto_cierre_gastos", $datos["monto_cierre_gastos"], PDO::PARAM_INT);
-    $stmt->bindParam(":monto_cierre_total", $datos["monto_cierre_total"], PDO::PARAM_INT);
+    $stmt->bindParam(":monto_cierre_ventas", $datos["monto_cierre_ventas"], PDO::PARAM_STR);
+    $stmt->bindParam(":monto_cierre_gastos", $datos["monto_cierre_gastos"], PDO::PARAM_STR);
+    $stmt->bindParam(":monto_cierre_total", $datos["monto_cierre_total"], PDO::PARAM_STR);
     // Se añade el id para hacer la consulta a un item especifico
     $stmt->bindParam(":id_caja", $datos["id_caja"], PDO::PARAM_INT);
 
@@ -178,7 +178,7 @@ EDITAR USUARIO
 
     $stmt = Conexion::conectar()->prepare("UPDATE caja_inicial SET $item1 = :$item1  WHERE id=1");
 
-    $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_INT);
+    $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
 
     if ($stmt->execute()) {
 

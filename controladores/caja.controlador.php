@@ -104,11 +104,12 @@ class ControladorCaja
         
         $item1 = "monto_inicial";
         $valorcierre = $_POST["monto_cierre_total"];
+       // var_dump($valorcierre);
        
        
         $respuesta = ModeloCaja::mdlCierreCaja($tabla, $datos);
         $actualizarMontoInicial = ModeloCaja::mdlActualizarCajaInicial($item1,$_POST["monto_cierre_final"]);
-
+       // var_dump($actualizarMontoInicial);
 
         if ($respuesta=="ok") {
           echo '<script>

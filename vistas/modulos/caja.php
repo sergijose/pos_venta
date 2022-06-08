@@ -160,7 +160,7 @@ error_reporting(0);
             $item = null;
             $valor = null;
             $respuesta = ControladorCaja::ctrMostrarCaja($item, $valor);
-            
+            //var_dump($respuesta);
             foreach ($respuesta as $key => $value) {
               echo '<tr>
                         <td>' . ($key + 1) . '</td>
@@ -180,7 +180,7 @@ error_reporting(0);
 
 
                         <td>' . $value["fecha_apertura"] . '</td>
-                        <td>$ ' . number_format($value["monto_apertura"], 2) . '</td>';
+                        <td>S/ ' . number_format($value["monto_apertura"], 2) . '</td>';
 
               // Se extrae el valor del estado_caja y dependiendo el valor se muestra el color
               if ($value["estado_caja"] == "abierto") {
@@ -203,12 +203,12 @@ error_reporting(0);
               // }
               // FINAL DE COLOR DEL BOTON DEPENDIENDO EL ESTADO  
               echo '<td>' . $value["fecha_cierre"] . '</td>
-                        <td>$ ' . number_format($value["monto_cierre_ventas"], 2) . '</td>
+                        <td>S/ ' . number_format($value["monto_cierre_ventas"], 2) . '</td>
 
                    
                 ';
-                 echo '  <td>$ ' . number_format($value["monto_cierre_gastos"], 2) . '</td>
-                        <td>$ ' . number_format($value["monto_cierre_total"], 2) . '</td>
+                 echo '  <td>S/ ' . number_format($value["monto_cierre_gastos"], 2) . '</td>
+                        <td>S/ ' . number_format($value["monto_cierre_total"],2) . '</td>
                 <td> <button  idCaja='.$value["id_caja"].' class="btnImprimirCaja btn btn-light btn-md "><i class="glyphicon glyphicon-eye-open"></i></button></td>
                     
                 ';
@@ -323,7 +323,7 @@ error_reporting(0);
                 <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
 
-                  <input type="number" class="form-control" id="montoInicial" name="montoInicial" min="1" step="any" value="<?php echo   $montoApertura;?>" required >
+                  <input type="number" class="form-control" id="montoInicial" name="montoInicial" min="1" step="any" value="<?php echo   number_format($montoApertura,2);?>" required >
                 </div>
               </div>
               <!-- NOMBRE DE USUARIO A CARGO DE CAJA -->
@@ -404,8 +404,16 @@ error_reporting(0);
                <div class="form-group">
                 <label>Monto de apertura en  caja</label>
                 <div class="input-group">
-                  <span class="input-group-addon"><i>$</i></span>
-                  <input type="number" class="form-control" id="monto_apertura" name="monto_apertura" min="0" step="any" value="<?php echo $montoApertura;?>" required readonly >
+                  <span class="input-group-addon"><i>S/</i></span>
+                  <?php
+                  //if( empty($montoApertura)){
+                    //$montoApertura=0;
+                  //}else{
+                    //  $montoApertura;
+                    //}
+                  
+                  ?>
+                  <input type="number" class="form-control" id="monto_apertura" name="monto_apertura" min="0" step="any" value="<?php echo number_format($montoApertura,2)?>" required readonly >
                 </div>
               </div>
               <!-- ENTRADA PARA MONTO CIERRE DE GASTOS-->
@@ -414,7 +422,7 @@ error_reporting(0);
               <div class="form-group">
                 <label>Monto de Cierre de ventas de turno</label>
                 <div class="input-group">
-                  <span class="input-group-addon"><i>$</i></span>
+                  <span class="input-group-addon"><i>S/</i></span>
                   <?php
                date_default_timezone_set('America/Lima');
 
@@ -425,6 +433,13 @@ error_reporting(0);
                   $fechafinal = date('Y-m-d H:i:s');
                  // var_dump($fechafinal);
                   $sumaVentas = ControladorVentas::ctrSumaTotalVentasXdia($fechaInicial,$fechafinal );
+
+                  if( empty($sumaVentas["total"])){
+                    $sumaVentas["total"]=0;
+                    }else{
+                      $sumaVentas["total"];
+                    }
+          
                  
                  //var_dump( $sumaVentas["total"]); 
                   //OBTENER LOS GASTOS HASTA LA FECHA
@@ -432,25 +447,35 @@ error_reporting(0);
                   $fechaFinal1 = date('Y-m-d H:i:s');
                   $sumaGastos = ControladorGastos::ctrSumaTotalGastosXdia($fechaInicial,$fechafinal);
                   //var_dump( $sumaGastos); 
+                  //en caso llegue vacio llenar con 0
+
+                  if( empty($sumaGastos["total"])){
+                    $sumaGastos["total"]=0;
+                    }else{
+                      $sumaGastos["total"];
+                      }
                   $totalCaja= ($montoApertura+$sumaVentas["total"])-$sumaGastos["total"];
+
+                  
                   ?>
-                  <input type="number" class="form-control" id="monto_cierre_ventas" name="monto_cierre_ventas" min="0" step="any" value="<?php echo $sumaVentas["total"];?>"required   >
+                  <input type="number" class="form-control" id="monto_cierre_ventas" name="monto_cierre_ventas" min="0" step="any" value="<?php echo number_format($sumaVentas["total"],2);?>"required readonly  >
                 </div>
               </div>
                 <!-- ENTRADA PARA SUMA  DE GASTOS -->
                 <div class="form-group">
                 <label>Monto de Cierre de gastos</label>
+                  
                 <div class="input-group">
-                  <span class="input-group-addon"><i>$</i></span>
-                  <input type="number" class="form-control" id="monto_cierre_gastos" name="monto_cierre_gastos" min="0" step="any" value="<?php echo $sumaGastos["total"];?>" required  >
+                  <span class="input-group-addon"><i>S/</i></span>
+                  <input type="number" class="form-control" id="monto_cierre_gastos" name="monto_cierre_gastos" min="0" step="any" value="<?php echo number_format($sumaGastos["total"],2);?>" required readonly >
                 </div>
               </div>
                <!-- ENTRADA PARA MONTO DE CIERRE CAJA -->
                <div class="form-group">
                 <label>Monto total de cierre de caja</label>
                 <div class="input-group">
-                  <span class="input-group-addon"><i>$</i></span> 
-                  <input type="number" class="form-control" id="monto_cierre_final" name="monto_cierre_final" min="0" step="any" value="<?php echo $totalCaja;?>" readonly required >
+                  <span class="input-group-addon"><i>S/</i></span> 
+                  <input type="number" class="form-control" id="monto_cierre_final" name="monto_cierre_final" min="0" step="any" value="<?php echo number_format($totalCaja,2);?>" readonly required >
                 </div>
               </div>
               <!-- ENTRADA PARA FECHA DE CIERRE DE CAJA -->

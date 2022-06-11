@@ -23,10 +23,9 @@ class ControladorCaja
       // Se cambia el estadoFinal a 2 opciones o abierto o cerrado
       if (
         preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreCaja"]) &&
-        preg_match('/^[0-9.]+$/', $_POST["montoInicial"]) &&
-        preg_match('/^(abierto|cerrado)$/', $_POST["estadoCaja"]) &&
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["montoFinal"])
-      ) {
+        preg_match('/^[0-9.,]+$/', $_POST["montoInicial"]) &&
+        preg_match('/^(abierto|cerrado)$/', $_POST["estadoCaja"]))
+       {
 
         $tabla = "caja";
         $datos = array(
@@ -37,8 +36,9 @@ class ControladorCaja
           "estado_caja" => $_POST["estadoCaja"],
           "monto_cierre_caja" => $_POST["montoFinal"]
         );
-
+        $actualizarMontoInicial = ModeloCaja::mdlActualizarCajaInicial("monto_inicial",$_POST["montoInicial"]);
         $respuesta = ModeloCaja::mdlAperturaCaja($tabla, $datos);
+     
 
         if ($respuesta == "ok") {
 
@@ -93,25 +93,18 @@ class ControladorCaja
 
         $tabla = "caja";
         $datos = array(
-          "id_caja" => $_POST["idCaja"],
           "estado_caja" => $_POST["estadoFinal"],
           "fecha_cierre" => $_POST["fechaCierre"],
           "monto_cierre_ventas" => $_POST["monto_cierre_ventas"],
           "monto_cierre_gastos" => $_POST["monto_cierre_gastos"],
-          "monto_cierre_total" => $_POST["monto_cierre_final"]
-        );
-
-        
-        $item1 = "monto_inicial";
-        $valorcierre = $_POST["monto_cierre_total"];
-       // var_dump($valorcierre);
-       
-       
-        $respuesta = ModeloCaja::mdlCierreCaja($tabla, $datos);
-        $actualizarMontoInicial = ModeloCaja::mdlActualizarCajaInicial($item1,$_POST["monto_cierre_final"]);
-       // var_dump($actualizarMontoInicial);
-
+          "monto_cierre_total" => $_POST["monto_cierre_final"],
+          "id_caja" => $_POST["idCaja"],
+        );    
+        $actualizarMontoInicial = ModeloCaja::mdlActualizarCajaInicial("monto_inicial",$_POST["monto_cierre_final"]);
+       $respuesta = ModeloCaja::mdlCierreCaja($tabla, $datos);
+    
         if ($respuesta=="ok") {
+        
           echo '<script>
 
 					swal({
@@ -149,6 +142,7 @@ class ControladorCaja
   }
 
 
+
   /*=============================== 
   APERTURA DE CAJA INICIAL
   =============================================*/
@@ -159,7 +153,7 @@ class ControladorCaja
 
       // Se cambia el estadoFinal a 2 opciones o abierto o cerrado
       if (
-        preg_match('/^[0-9.]+$/', $_POST["montoApertura"]) 
+        preg_match('/^[0-9.,]+$/', $_POST["montoApertura"]) 
         
       ) {
 

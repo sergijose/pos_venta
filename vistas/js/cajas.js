@@ -51,3 +51,15 @@ $(".tablas").on("click", ".btnImprimirCaja", function () {
 	var codigoCaja = $(this).attr("idCaja");
 	window.open("extensiones/tcpdf/pdf/cajas.php?idCaja=" + codigoCaja, "_blank");
   })
+
+  
+
+	
+
+		
+
+	//$("h5").html("El valor ha cambiado a: "+$("#main").val());
+ //   alert("recuerda que estas cambiando el monto de tu caja")
+
+
+

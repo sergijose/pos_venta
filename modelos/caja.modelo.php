@@ -141,7 +141,7 @@ EDITAR USUARIO
 			                              VALUES (:id_usuario, :monto_inicial)");
 
     $stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT); // Usuario que realiza Apertura y Cierre
-    $stmt->bindParam(":monto_inicial", $datos["monto_inicial"], PDO::PARAM_INT);//Monto con que se abre Caja
+    $stmt->bindParam(":monto_inicial", $datos["monto_inicial"], PDO::PARAM_STR);//Monto con que se abre Caja
    
  
     
@@ -165,7 +165,7 @@ EDITAR USUARIO
 
       $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll();
     }
 
     // $stmt->close();
@@ -179,14 +179,7 @@ EDITAR USUARIO
     $stmt = Conexion::conectar()->prepare("UPDATE caja_inicial SET $item1 = :$item1  WHERE id=1");
 
     $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-
-    if ($stmt->execute()) {
-
-      return "ok";
-    } else {
-
-      return "error";
-    }
+    $stmt->execute();
     // $stmt->close();
     $stmt = null;
   }

@@ -14,7 +14,7 @@ class ModeloGastos
     $stmt->bindParam(":destino", $datos["destino"], PDO::PARAM_STR);
     $stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
     $stmt->bindParam(":cantidad", $datos["cantidad"], PDO::PARAM_INT);
-    $stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_INT);
+    $stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 
     if ($stmt->execute()) {
       return "ok";

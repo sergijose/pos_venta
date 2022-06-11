@@ -107,7 +107,7 @@
                 <label>Monto Inicial</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-                  <input type="number" class="form-control" id="montoInicial" name="montoInicial" min="1" step="any" placeholder="Monto Apertura" required>
+                  <input type="text" class="form-control" id="montoInicial" name="montoInicial" placeholder="Monto Apertura" required>
                 </div>
               </div>
               <!-- NOMBRE DE USUARIO A CARGO DE CAJA -->
@@ -187,8 +187,8 @@
               <div class="form-group">
                 <label>Monto de Cierre</label>
                 <div class="input-group">
-                  <span class="input-group-addon"><i>$</i></span>
-                  <input type="number" class="form-control" id="monto_final" name="monto_final" min="0" step="any" placeholder="Monto de Cierre" required>
+                  <span class="input-group-addon"><i>S/</i></span>
+                  <input type="text" class="form-control" id="monto_final" name="monto_final"  placeholder="Monto de Cierre" required>
                 </div>
               </div>
               <!-- ENTRADA PARA FECHA DE CIERRE DE CAJA -->

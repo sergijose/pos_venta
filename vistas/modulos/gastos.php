@@ -62,7 +62,7 @@ if ($_SESSION["perfil"] != "Administrador") {
                       <td>' . $value["destino"] . '</td>
                       <td>' . $value["descripcion"] . '</td>
                       <td>' . $value["cantidad"] . '</td>
-                      <td>' . $value["precio"] . '</td>
+                      <td>' . number_format($value["precio"],2, '.', '') . '</td>
                       <td>' . $value["fecha"] . '</td>
                   
 

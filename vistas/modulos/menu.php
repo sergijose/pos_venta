@@ -59,6 +59,8 @@
 						 </a>
 					 </li>
 					 <li>';
+
+					   if($_SESSION["perfil"] == "Administrador"  ){
 					 echo '
 					 <li>
 						 <a href="gastos">
@@ -67,6 +69,7 @@
 						 </a>
 					 </li>
 					 <li>';
+					}
 				 
  
 
